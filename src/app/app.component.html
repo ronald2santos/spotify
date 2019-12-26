@@ -1,0 +1,12 @@
+<div class="spotify-logo">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
+  width=200>
+</div>
+
+
+<div *ngIf="token && token !== 'undefined'">
+  <app-search-bar></app-search-bar>
+  <app-nav-bar></app-nav-bar>
+</div>
+
+<router-outlet></router-outlet>

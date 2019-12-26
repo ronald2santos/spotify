@@ -1,0 +1,48 @@
+div {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    /* margin: auto;
+    height: 80vh;
+    width: 50vw; */
+    opacity: 1;
+    transition: opacity 0.5s;
+    overflow: visible;
+}
+
+canvas {
+    margin: 0;
+    /* padding: -20%; */
+    max-height: 350px;
+    max-width: 700px;
+    overflow: visible;
+}
+
+div.hidden {
+    opacity: 0;
+    z-index: -1000;
+}
+
+span {
+  font-size: 0.65em;
+  color: rgba(88, 88, 88, 0.438);
+}
+
+@media only screen and (max-width: 1090px) {
+
+    canvas {
+        margin-left:-10%;
+        /* padding: -20%; */
+        max-height: 350px;
+        max-width: 700px;
+    }
+
+    span {
+      margin-left: -20%;
+    }
+
+  }
+
+

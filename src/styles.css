@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
+
+html {
+  scrollbar-face-color: #121212;
+  scrollbar-base-color: #121212;
+  scrollbar-3dlight-color: #121212;
+  scrollbar-highlight-color: #121212;
+  scrollbar-track-color: #000;
+  scrollbar-arrow-color: #000;
+  scrollbar-shadow-color: #121212;
+  scrollbar-dark-shadow-color: #121212;
+}
+
+::-webkit-scrollbar { width: 8px; height: 3px;}
+::-webkit-scrollbar-button {  background-color: #121212; }
+::-webkit-scrollbar-track {  background-color: #121212;}
+::-webkit-scrollbar-track-piece { background-color: #000;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #121212; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #121212;}
+::-webkit-resizer { background-color: #121212;}
+
+body {
+  background-color: #121212;
+  width: 100%;
+  height: 100%;
+  font-family: 'Didact Gothic', sans-serif;
+}

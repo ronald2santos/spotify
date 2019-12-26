@@ -1,0 +1,23 @@
+div.spotify-logo {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 45px;
+}
+
+.login {
+    clear: both;
+    display: block;
+    margin: 50px auto;
+    width: 120px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: #1db954;
+    border-radius: 30px;
+    color: RGBA(231, 252, 255, 1);
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+}

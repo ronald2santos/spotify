@@ -1,0 +1,21 @@
+div {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 1000;
+}
+
+canvas {
+    margin: 0;
+    padding: -20%;
+    max-height: 350px;
+    max-width: 700px;
+}
+
+div.hidden {
+    opacity: 0;
+    z-index: -1000;
+}

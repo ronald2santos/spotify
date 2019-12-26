@@ -1,0 +1,24 @@
+
+h4 {
+  color: white;
+  font-size: 0.8em;
+  width: 50%;
+}
+
+ul {
+  -webkit-column-count: 4;
+  -moz-column-count: 4;
+       column-count: 4;
+  box-sizing: border-box;
+  margin-left: 15%;
+  width: 60%;
+  /* height: 800px; */
+  list-style-type: none;
+  overflow: hidden;
+  background-color: #121212;
+}
+
+li {
+  width: 200px;
+  height: 200px;
+}
