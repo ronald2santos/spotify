@@ -1,12 +1,15 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import queryString from 'query-string';
+import { slideInAnimation, fadeInAnimation } from './router.animation';
+
 
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [slideInAnimation, fadeInAnimation]
 })
 export class AppComponent implements OnInit, OnChanges {
   title = 'spotify-analytics';

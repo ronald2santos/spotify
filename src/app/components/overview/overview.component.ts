@@ -4,11 +4,14 @@ import { ArtistService } from '../../services/artist.service';
 import { SpotifyService } from '../../services/spotify.service';
 import { Artist } from 'src/app/typing/artist';
 import { ActivatedRoute } from '@angular/router';
+import { fadeInAnimation } from '../../router.animation';
+
 
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.css']
+  styleUrls: ['./overview.component.css'],
+  animations: [fadeInAnimation]
 })
 export class OverviewComponent implements OnInit {
 

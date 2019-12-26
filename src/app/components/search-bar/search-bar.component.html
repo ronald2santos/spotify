@@ -19,7 +19,7 @@
     />
   </div>
   <ul *ngIf="results.length > 0 && selectedOption === 'artists'" class="filter-select">
-    <li *ngFor="let artist of results; let i = index" class="filter-select-list" (click)="onArtistSelect(i)">
+    <li *ngFor="let artist of results; let i = index" [ngStyle]="{'animation-delay': i*0.05 + 's'}" class="filter-select-list" (click)="onArtistSelect(i)">
       <img class="artist-image" src="{{ artist.images['2']?.url }}" alt="" width="50" height="50" />
       <img style="margin-left: -20px;" *ngIf="!artist.images['2']?.url" class="artist-image" src="../../../assets/spotify-logo.png" alt="" width="50" height="50" />
       <p class="artist-name">
@@ -31,7 +31,7 @@
   </ul>
 
   <ul *ngIf="results.length > 0 && selectedOption === 'tracks'" class="filter-select">
-      <li *ngFor="let track of results; let i = index" class="filter-select-list" (click)="onTrackSelect(i)">
+      <li *ngFor="let track of results; let i = index"  [ngStyle]="{'margin-bottom': '-20px', 'animation-delay': i*0.05 + 's'}" class="filter-select-list" (click)="onTrackSelect(i)">
         <img class="track-image" src="{{ track.album.images['0']?.url }}" alt="" width="50" height="50" />
         <p class="artist-name">
           {{ track.name }}

@@ -41,8 +41,8 @@ app.get('/callback', function(req, res) {
     console.log(response)
     const accessToken = body.access_token
     const refreshToken = body.refresh_token
-    process.env.access_token = accessToken
-    process.env.refresh_token = refreshToken
+    // process.env.access_token = accessToken
+    // process.env.refresh_token = refreshToken
     let uri = process.env.FRONTEND_URI || 'http://localhost:4200'
     res.redirect(uri + '?access_token=' + accessToken + '&refresh_token=' + refreshToken)
   })
@@ -69,8 +69,8 @@ app.get('/refresh', function(req, res) {
     console.log(response)
     const accessToken = body.access_token;
     const refreshToken = body.refresh_token
-    process.env.access_token = accessToken
-    process.env.refresh_token = refreshToken
+    // process.env.access_token = accessToken
+    // process.env.refresh_token = refreshToken
     let uri = process.env.FRONTEND_URI || 'http://localhost:4200'
     res.redirect(uri + '?access_token=' + accessToken + '&refresh_token=' + refreshToken)
   })

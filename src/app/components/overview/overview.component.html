@@ -1,4 +1,4 @@
-<div *ngIf="selectedArtist" class="all">
+<div *ngIf="selectedArtist" [@fade]="!selectedTrack" class="all">
   <div class="title">
     <h1>{{ selectedArtist?.name }}</h1>
     <span class="followers"
@@ -53,7 +53,7 @@
   </div>
 </div>
 
-<div *ngIf="selectedTrack" class="all">
+<div *ngIf="selectedTrack" [@fade]="!selectedArtist" class="all">
   <div class="title">
     <h1>{{ selectedTrack?.name }}</h1>
     <span class="followers">Popularity: {{ selectedTrack?.popularity }}% </span>

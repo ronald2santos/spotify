@@ -55,7 +55,7 @@ input {
 }
 
 #keyword:focus {
-  border-color : rgb(81, 238, 89);;
+  border-color : rgb(81, 238, 89);
 }
 
 #keyword-button {
@@ -84,6 +84,8 @@ input {
   top: calc(50% + 25px);
   max-height: calc(800%);
   overflow-y: auto;
+  opacity: 0.95;
+  animation: fadeIn 0.2s ease-in-out;
 }
 
 .filter-select-list img {
@@ -138,9 +140,11 @@ input {
 }
 
 .filter-select-list {
+  opacity: 0;
   cursor: pointer;
   padding: 5px 10px;
   margin-top: 10px;
+  animation: fadeIn 0.3s ease-in-out forwards;
 }
 
 .artist-name {
@@ -160,6 +164,17 @@ input {
 .list-highlight:hover {
   background: rgb(55, 55, 55);
   color: #fff
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+      /* height: 0%; */
+  }
+  100% {
+      opacity: 1;
+      /* height: 100%; */
+  }
 }
 
 @media only screen and (max-width: 768px) {
