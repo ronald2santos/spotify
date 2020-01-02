@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
   getUserTopArtists() {
     this.spotify.getUserTopArtists().subscribe(
       (artists) => {
-        console.log(artists);
+        // console.log(artists);
         this.artists = artists.items;
       }
     );

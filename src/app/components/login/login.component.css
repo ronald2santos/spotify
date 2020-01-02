@@ -4,9 +4,11 @@
     margin: 50px auto;
     width: 120px;
     height: 30px;
-    outline: none;
+    /* outline: none; */
     border: none;
     background-color: #1db954;
+    /* box-shadow: #6effa14d -3px -3px 3px,
+    rgba(22, 73, 31, 0.63) 3px 3px 3px; */
     border-radius: 30px;
     color: RGBA(231, 252, 255, 1);
     font-weight: 400;

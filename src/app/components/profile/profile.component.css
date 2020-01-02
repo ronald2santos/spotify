@@ -40,6 +40,10 @@ p {
     left: 60%; */
     /* z-index: -1; */
   }
+/*
+  div.button-wrapper {
+    margin-left: -10%;
+  } */
 
   img {
     transition: width 0.5s;
@@ -269,6 +273,11 @@ p {
 
   div.wrapper {
       margin-left: -5%;
+  }
+
+  div.title {
+    margin-top: 2%;
+    margin-bottom: -4%;
   }
 
  label {
