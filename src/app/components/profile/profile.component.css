@@ -1,3 +1,86 @@
+.artist-carousel {
+  margin: 5%;
+  margin-left: 10%;
+}
+
+.track-carousel {
+  margin: 5%;
+  margin-left: 10%;
+  margin-top: -5%;
+}
+
+.carousel-header {
+  color: #949494;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.artist-title {
+  color: #949494;
+  /* text-align: center;
+  align-self: center; */
+  /* margin-left: -5%; */
+  margin: auto;
+  font-size: 0.8em;
+}
+
+.artist-subtitle {
+  color: #9494949f;
+  /* text-align: center; */
+  margin: auto;
+  font-size: 0.6em;
+}
+
+.artist-image {
+  margin-left: 10%;
+}
+
+.artist-details, .track-details, .artist-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+}
+
+.artist-data {
+  margin-left: 15px;
+  text-align: center;
+}
+
+.artist-details:hover {
+  cursor: pointer;
+}
+
+.track-details:hover {
+  cursor: pointer;
+}
+
+
+.logout {
+  margin-top: 18px;
+  width: 60px;
+  height: 15px;
+  outline: none;
+  border: none;
+  background-color: #1db95452;
+  border-radius: 30px;
+  color: RGBA(231, 252, 255, 0.5);
+  font-weight: 400;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: RGBA(231, 252, 255, 1);
+  background-color: #1db954a1;
+}
+
+.logout-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
 
 p {
     color: white;
@@ -27,6 +110,7 @@ p {
     flex-direction: row;
     justify-content: center;
     transition: flex-direction 0.5;
+    margin-left: 5%;
   }
 
   .chart {
@@ -41,7 +125,8 @@ p {
     /* z-index: -1; */
   }
 
-  img {
+  .image {
+    /* margin-left: 50%; */
     transition: width 0.5s;
   }
 
@@ -110,7 +195,7 @@ p {
     top: -10px; */
   }
 
-  img {
+  .image {
     margin-left: 10%;
     margin-right: -50px;
     box-shadow: #00000075 -10px 10px 30px;
@@ -178,9 +263,26 @@ p {
       justify-content: center;
       align-items: center;
       z-index: 10000;
+      margin-left: -12%;
+  }
+
+  @media only screen and (max-width: 1600px) {
+    div.button-wrapper {
+      margin-left: -8%;
+    }
+  }
+
+  @media only screen and (max-width: 1300px) {
+    div.button-wrapper {
+      margin-left: 0;
+    }
   }
 
   @media only screen and (max-width: 1090px) {
+    .artist-carousel {
+      margin-top: 0;
+    }
+
     div.wrapper {
       display: flex;
       flex-direction: column;
@@ -221,12 +323,9 @@ p {
         margin-right: 0;
     } */
 
-    div.image {
+    .image {
       margin: 0;
-    }
-
-    img {
-        margin-left: 0;
+      margin-left: 7.5%;
     }
 
     div.chart {
@@ -252,19 +351,27 @@ p {
 
   }
   @media only screen and (max-width: 768px) {
-    img {
-      margin-top: 17.5%;
-      /* margin-left: 5%; */
+    .carousel-header {
+      font-size: 0.85em;
+    }
+
+    .artist-data {
+      font-size: 0.8em;
+    }
+
+    .image {
+      /* margin-top: 17.5%; */
+      margin-left: 10vw;
       width: 240px;
       transition: width 0.5s;
     }
 
   div.chart {
-    width: 100%;
+    width: 80%;
      /* padding: 0;
     display: flex;
     flex-direction: column; */
-    margin-left: 35vw;
+    margin-left: 30vw;
   }
 
   div.wrapper {

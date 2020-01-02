@@ -17,7 +17,8 @@ app.get('/login', function(req, res) {
       response_type: 'code',
       client_id: process.env.SPOTIFY_CLIENT_ID,
       scope: 'user-read-private user-read-email user-follow-read user-follow-modify user-top-read user-read-recently-played user-library-modify user-library-read',
-      redirect_uri
+      redirect_uri,
+      show_dialog: true
     }))
 })
 

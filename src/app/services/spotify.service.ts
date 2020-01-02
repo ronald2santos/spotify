@@ -56,12 +56,12 @@ export class SpotifyService {
     return this.getQuery(url);
   }
 
-  getUserTopArtists(limit: number = 50, range: string = 'medium_term') {
+  getUserTopArtists(limit: number = 20, range: string = 'medium_term') {
     const url = `/me/top/artists?time_range=${range}&limit=${limit}`;
     return this.getQuery(url);
   }
 
-  getUserTopTracks(limit: number = 50, range: string = 'medium_term') {
+  getUserTopTracks(limit: number = 20, range: string = 'medium_term') {
     const url = `/me/top/tracks?time_range=${range}&limit=${limit}`;
     return this.getQuery(url);
   }
