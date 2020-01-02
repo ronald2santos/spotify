@@ -1,4 +1,4 @@
-console.log(require('dotenv').config({debug: true}))
+// console.log(require('dotenv').config({debug: true}))
 
 let express = require('express')
 let request = require('request')
