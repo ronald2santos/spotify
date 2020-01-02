@@ -80,14 +80,14 @@ app.get('/refresh', function(req, res) {
 // Run the app by serving the static files
 // in the dist directory
 
-// app.use(express.static(__dirname + '/dist/spotify-analytics'));
+app.use(express.static(__dirname + '/dist/spotify-analytics'));
 
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
 
-// app.get('/*', function(req, res) {
-//   res.sendFile(path.join(__dirname + '/dist/spotify-analytics/index.html'));
-// });
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/spotify-analytics/index.html'));
+});
 
 let port = process.env.PORT || 8888
 console.log(`Listening on port ${port}. Go /login to initiate authentication flow.`)
