@@ -1,11 +1,12 @@
 <div [class.hidden]="chartData.length === 0">
-    <canvas baseChart
-      [datasets]="radarChartData"
-      [options]="radarChartOptions"
-      [labels]="radarChartLabels"
-      [legend]="true"
-      [chartType]="radarChartType">
+    <canvas
+        baseChart
+        [datasets]="radarChartData"
+        [options]="radarChartOptions"
+        [labels]="radarChartLabels"
+        [legend]="true"
+        [chartType]="radarChartType"
+    >
     </canvas>
     <span>(Hover to see stats)</span>
 </div>
-

@@ -1,87 +1,65 @@
 <div *ngIf="user" class="all">
-  <div class="title">
-    <h1>{{ user.display_name }}</h1>
-    <span class="followers"
-      >Country: {{ user.country }} | {{ user?.followers.total }} followers
-    </span>
-  </div>
-  <div class="wrapper">
-    <div class="image">
-      <img src="{{ user.images[0].url }}" width="320" />
+    <div class="title">
+        <h1>{{ user.display_name }}</h1>
+        <span class="followers">Country: {{ user.country }} | {{ user?.followers.total }} followers </span>
     </div>
-    <div class="chart">
-      <app-audio-features-chart
-        [profileTracks]="tracks"
-      ></app-audio-features-chart>
+    <div class="wrapper">
+        <div class="image">
+            <img src="{{ user.images[0].url }}" width="320" />
+        </div>
+        <div class="chart">
+            <app-audio-features-chart [profileTracks]="tracks"></app-audio-features-chart>
+        </div>
+        <div class="button-wrapper">
+            <h4 class="tempo">Choose how to show your data:</h4>
+            <div class="radio-wrapper">
+                <form [formGroup]="timeRangeForm" class="radio-group">
+                    <div class="radio-button">
+                        <input
+                            [formControl]="timeRangeSelector"
+                            formControlName="timeRangeSelector"
+                            type="radio"
+                            value="short_term"
+                            id="Last Month"
+                        />
+                        <label for="Last Month">Last Month</label>
+                    </div>
+                    <div class="radio-button">
+                        <input
+                            [formControl]="timeRangeSelector"
+                            formControlName="timeRangeSelector"
+                            type="radio"
+                            value="medium_term"
+                            id="Last 6 Months"
+                        />
+                        <label for="Last 6 Months">Last 6 Months</label>
+                    </div>
+                    <div class="radio-button">
+                        <input
+                            [formControl]="timeRangeSelector"
+                            formControlName="timeRangeSelector"
+                            type="radio"
+                            value="long_term"
+                            id="All Time"
+                        />
+                        <label for="All Time">All Time</label>
+                    </div>
+                </form>
+                <form [formGroup]="trackLimitForm" class="radio-group">
+                    <div class="radio-button">
+                        <input [formControl]="trackLimitSelector" formControlName="trackLimitSelector" type="radio" value="10" id="10" />
+                        <label for="10">Top 10</label>
+                    </div>
+                    <div class="radio-button">
+                        <input [formControl]="trackLimitSelector" formControlName="trackLimitSelector" type="radio" value="20" id="20" />
+                        <label for="20">Top 20</label>
+                    </div>
+                    <div class="radio-button">
+                        <input [formControl]="trackLimitSelector" formControlName="trackLimitSelector" type="radio" value="50" id="50" />
+                        <label for="50">Top 50</label>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-    <div class="button-wrapper">
-      <h4 class="tempo">Choose how to show your data:</h4>
-      <div class="radio-wrapper">
-        <form [formGroup]="timeRangeForm" class="radio-group">
-          <div class="radio-button">
-            <input
-              [formControl]="timeRangeSelector"
-              formControlName="timeRangeSelector"
-              type="radio"
-              value="short_term"
-              id="Last Month"
-            />
-            <label for="Last Month">Last Month</label>
-          </div>
-          <div class="radio-button">
-            <input
-              [formControl]="timeRangeSelector"
-              formControlName="timeRangeSelector"
-              type="radio"
-              value="medium_term"
-              id="Last 6 Months"
-            />
-            <label for="Last 6 Months">Last 6 Months</label>
-          </div>
-          <div class="radio-button">
-            <input
-              [formControl]="timeRangeSelector"
-              formControlName="timeRangeSelector"
-              type="radio"
-              value="long_term"
-              id="All Time"
-            />
-            <label for="All Time">All Time</label>
-          </div>
-        </form>
-        <form [formGroup]="trackLimitForm" class="radio-group">
-          <div class="radio-button">
-            <input
-              [formControl]="trackLimitSelector"
-              formControlName="trackLimitSelector"
-              type="radio"
-              value="10"
-              id="10"
-            />
-            <label for="10">Top 10</label>
-          </div>
-          <div class="radio-button">
-            <input
-              [formControl]="trackLimitSelector"
-              formControlName="trackLimitSelector"
-              type="radio"
-              value="20"
-              id="20"
-            />
-            <label for="20">Top 20</label>
-          </div>
-          <div class="radio-button">
-            <input
-              [formControl]="trackLimitSelector"
-              formControlName="trackLimitSelector"
-              type="radio"
-              value="50"
-              id="50"
-            />
-            <label for="50">Top 50</label>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 </div>

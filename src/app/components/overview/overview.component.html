@@ -1,128 +1,110 @@
 <div *ngIf="selectedArtist" class="all">
-  <div class="title">
-    <h1>{{ selectedArtist?.name }}</h1>
-    <span class="followers"
-      >Popularity: {{ selectedArtist?.popularity }}% |
-      {{ selectedArtist?.followers.total | number: "2." }} followers
-    </span>
-    <span *ngIf="following" class="followers">Following: {{ following }} </span>
-  </div>
-  <div class="wrapper">
-    <div class="root">
-      <div class="image">
-        <img src="{{ selectedArtist.images[1].url }}" width="320" />
-      </div>
-      <div class="info">
-        <div class="genres">
-          <h4>Genres</h4>
-          <span
-            class="tags"
-            *ngFor="let genre of selectedArtist?.genres | slice: 0:6"
-          >
-            {{ genre }} -</span
-          >
-        </div>
-        <div class="avg">
-          <div>
-            <h4 class="tempo">Avg Tempo</h4>
-            <span class="tags">{{ tempo }} BPM</span>
-          </div>
-          <div>
-            <h4 class="tempo">Avg Song Duration</h4>
-            <span class="tags">{{ duration | date: "mm:ss" }}</span>
-          </div>
-        </div>
-        <div *ngIf="selectedArtist" class="horizontal-chart">
-          <app-keys [keyModeData]="keyModeData"></app-keys>
-        </div>
-      </div>
+    <div class="title">
+        <h1>{{ selectedArtist?.name }}</h1>
+        <span class="followers"
+            >Popularity: {{ selectedArtist?.popularity }}% | {{ selectedArtist?.followers.total | number: '2.' }} followers
+        </span>
+        <span *ngIf="following" class="followers">Following: {{ following }} </span>
     </div>
-    <div class="chart artist">
-      <app-audio-features-chart
-        (tempo)="tempo = $event"
-        (duration)="duration = $event"
-        (keyModeData)="keyModeData = $event"
-        [selectedArtist]="selectedArtist"
-      ></app-audio-features-chart>
+    <div class="wrapper">
+        <div class="root">
+            <div class="image">
+                <img src="{{ selectedArtist.images[1].url }}" width="320" />
+            </div>
+            <div class="info">
+                <div class="genres">
+                    <h4>Genres</h4>
+                    <span class="tags" *ngFor="let genre of selectedArtist?.genres | slice: 0:6"> {{ genre }} -</span>
+                </div>
+                <div class="avg">
+                    <div>
+                        <h4 class="tempo">Avg Tempo</h4>
+                        <span class="tags">{{ tempo }} BPM</span>
+                    </div>
+                    <div>
+                        <h4 class="tempo">Avg Song Duration</h4>
+                        <span class="tags">{{ duration | date: 'mm:ss' }}</span>
+                    </div>
+                </div>
+                <div *ngIf="selectedArtist" class="horizontal-chart">
+                    <app-keys [keyModeData]="keyModeData"></app-keys>
+                </div>
+            </div>
+        </div>
+        <div class="chart artist">
+            <app-audio-features-chart
+                (tempo)="tempo = $event"
+                (duration)="duration = $event"
+                (keyModeData)="keyModeData = $event"
+                [selectedArtist]="selectedArtist"
+            ></app-audio-features-chart>
+        </div>
     </div>
-  </div>
-  <div class="center">
-    <span *ngIf="selectedArtist" class="disclaimer"
-      >Based on artist's Top 10 Tracks</span
-    >
-  </div>
+    <div class="center">
+        <span *ngIf="selectedArtist" class="disclaimer">Based on artist's Top 10 Tracks</span>
+    </div>
 </div>
 
 <div *ngIf="selectedTrack" class="all">
-  <div class="title">
-    <h1>{{ selectedTrack?.name }}</h1>
-    <span class="followers">Popularity: {{ selectedTrack?.popularity }}% </span>
-  </div>
-  <div class="wrapper">
-    <div class="root track">
-      <div class="image track">
-        <img src="{{ selectedTrack.album.images[1].url }}" width="320" />
-        <audio id="audio" controls="" preload="auto" name="media" src="{{selectedTrack.preview_url}}"  type="audio/mpeg">
-        </audio>
-      </div>
-      <div class="info track">
-        <div style="margin-top: -10px" class="genres">
-          <h4>Artist</h4>
-          <span
-            class="tags"
-            *ngFor="let artist of selectedTrack?.artists | slice: 0:6"
-          >
-            {{ artist.name }}
-          </span>
-        </div>
-        <div class="avg track">
-          <div>
-            <h4 class="tempo">
-              {{ selectedTrack.album.album_type | titlecase }}
-            </h4>
-            <span class="tags">{{ selectedTrack.album.name }}</span>
-            <div>
-              <span
-                *ngIf="selectedTrack.album.album_type === 'album'"
-                class="tags"
-                >Track {{ selectedTrack.track_number }}</span
-              >
-            </div>
-            <div>
-              <span class="tags">
-                Released on: {{ selectedTrack.album.release_date }}</span
-              >
-            </div>
-          </div>
-          <div class="track-info">
-            <div>
-              <h4 class="tempo">
-                Tempo
-              </h4>
-              <span class="tags">{{ tempo }} BPM</span>
-            </div>
-            <div>
-              <h4 class="tempo">Duration</h4>
-              <span class="tags">{{
-                selectedTrack.duration_ms | date: "mm:ss"
-              }}</span>
-            </div>
-            <div>
-              <h4 class="tempo">
-                Key
-              </h4>
-              <span class="tags">{{ keyMode }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="title">
+        <h1>{{ selectedTrack?.name }}</h1>
+        <span class="followers">Popularity: {{ selectedTrack?.popularity }}% </span>
     </div>
-    <div class="chart">
-      <app-audio-features-chart
-        (tempo)="tempo = $event"
-        (keyMode)="keyMode = $event"
-        [selectedTrack]="selectedTrack"
-      ></app-audio-features-chart>
+    <div class="wrapper">
+        <div class="root track">
+            <div class="image track">
+                <img src="{{ selectedTrack.album.images[1].url }}" width="320" />
+                <audio id="audio" controls="" preload="auto" name="media" src="{{ selectedTrack.preview_url }}" type="audio/mpeg"></audio>
+            </div>
+            <div class="info track">
+                <div style="margin-top: -10px" class="genres">
+                    <h4>Artist</h4>
+                    <span class="tags" *ngFor="let artist of selectedTrack?.artists | slice: 0:6">
+                        {{ artist.name }}
+                    </span>
+                </div>
+                <div class="avg track">
+                    <div>
+                        <h4 class="tempo">
+                            {{ selectedTrack.album.album_type | titlecase }}
+                        </h4>
+                        <span class="tags">{{ selectedTrack.album.name }}</span>
+                        <div>
+                            <span *ngIf="selectedTrack.album.album_type === 'album'" class="tags"
+                                >Track {{ selectedTrack.track_number }}</span
+                            >
+                        </div>
+                        <div>
+                            <span class="tags"> Released on: {{ selectedTrack.album.release_date }}</span>
+                        </div>
+                    </div>
+                    <div class="track-info">
+                        <div>
+                            <h4 class="tempo">
+                                Tempo
+                            </h4>
+                            <span class="tags">{{ tempo }} BPM</span>
+                        </div>
+                        <div>
+                            <h4 class="tempo">Duration</h4>
+                            <span class="tags">{{ selectedTrack.duration_ms | date: 'mm:ss' }}</span>
+                        </div>
+                        <div>
+                            <h4 class="tempo">
+                                Key
+                            </h4>
+                            <span class="tags">{{ keyMode }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="chart">
+            <app-audio-features-chart
+                (tempo)="tempo = $event"
+                (keyMode)="keyMode = $event"
+                [selectedTrack]="selectedTrack"
+            ></app-audio-features-chart>
+        </div>
     </div>
-  </div>
 </div>
