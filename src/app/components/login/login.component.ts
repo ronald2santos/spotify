@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // window.location.href = 'https://spotify-stats-angular.herokuapp.com/login';
-    window.location.href = 'http://localhost:8888/login';
+    window.location.href = 'https://spotify-stats-angular.herokuapp.com/login';
+    // window.location.href = 'http://localhost:8888/login';
   }
 }
