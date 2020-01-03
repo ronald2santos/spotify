@@ -95,8 +95,26 @@ export class OverviewComponent implements OnInit {
     // console.log('Cheking Follow status');
     this.spotify.checkIfUserFollowsArtists([artistID]).subscribe(
       (following) => {
-        console.log(following);
-        this.following = following;
+        console.log(following[0]);
+        this.following = following[0];
+      }
+    );
+  }
+
+  follow() {
+    this.spotify.followArtist(this.selectedArtist.id).subscribe(
+      (followStatus) => {
+        console.log(followStatus);
+        this.checkFollowing(this.selectedArtist.id);
+      }
+    );
+  }
+
+  unfollow() {
+    this.spotify.unfollowArtist(this.selectedArtist.id).subscribe(
+      (followStatus) => {
+        console.log(followStatus);
+        this.checkFollowing(this.selectedArtist.id);
       }
     );
   }

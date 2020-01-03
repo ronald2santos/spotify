@@ -18,7 +18,23 @@ export class SpotifyService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });
-    return this.http.get(apiURL, {headers});
+    return this.http.get(apiURL, { headers });
+  }
+
+  putQuery(query: string): Observable<any> {
+    const apiURL = `https://api.spotify.com/v1${query}`;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`
+    });
+    return this.http.put(apiURL, {}, { headers });
+  }
+
+  deleteQuery(query: string): Observable<any> {
+    const apiURL = `https://api.spotify.com/v1${query}`;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`
+    });
+    return this.http.delete(apiURL, { headers });
   }
 
   getCurrentUserProfile() {
@@ -64,6 +80,16 @@ export class SpotifyService {
   getUserTopTracks(limit: number = 20, range: string = 'medium_term') {
     const url = `/me/top/tracks?time_range=${range}&limit=${limit}`;
     return this.getQuery(url);
+  }
+
+  followArtist(artistID) {
+    const url = `/me/following?type=artist&ids=${artistID}`;
+    return this.putQuery(url);
+  }
+
+  unfollowArtist(artistID) {
+    const url = `/me/following?type=artist&ids=${artistID}`;
+    return this.deleteQuery(url);
   }
 
 }

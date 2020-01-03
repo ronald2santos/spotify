@@ -1,11 +1,14 @@
 <div *ngIf="selectedArtist" [@fade]="!selectedTrack" class="all">
   <div class="title">
-    <h1>{{ selectedArtist?.name }}</h1>
+    <div class="follow-title">
+      <h1>{{ selectedArtist?.name }}</h1>
+      <input class="follow" type="button" value="{{following ? 'Unfollow' : 'Follow'}}" (click)="!following ? follow() : unfollow()"/>
+    </div>
     <span class="followers"
       >Popularity: {{ selectedArtist?.popularity }}% |
       {{ selectedArtist?.followers.total | number: "2." }} followers
     </span>
-    <span *ngIf="following" class="followers">Following: {{ following }} </span>
+    <!-- <span *ngIf="following" class="followers">Following: {{ following }} </span> -->
   </div>
   <div class="wrapper">
     <div class="root">

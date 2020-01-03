@@ -1,3 +1,29 @@
+.follow {
+  margin-top: 18px;
+  margin-left: 10px;
+  width: 60px;
+  height: 15px;
+  outline: none;
+  border: none;
+  background-color: #1db95452;
+  border-radius: 30px;
+  color: RGBA(231, 252, 255, 0.5);
+  font-weight: 400;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.follow:hover {
+  color: RGBA(231, 252, 255, 1);
+  background-color: #1db954a1;
+}
+
+.follow-title {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 img {
   object-fit: contain
 }
