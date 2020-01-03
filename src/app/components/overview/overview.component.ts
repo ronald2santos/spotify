@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, SimpleChanges } from '@angular/core';
 import { TrackService } from '../../services/track.service';
 import { ArtistService } from '../../services/artist.service';
 import { SpotifyService } from '../../services/spotify.service';
@@ -53,12 +53,11 @@ export class OverviewComponent implements OnInit {
 
 
   ngOnInit() {
-    this.artistService.artistObservable.subscribe((artist) => this.selectedArtist = artist);
+    this.artistService.artistObservable.subscribe((artist) => {
+      this.selectedArtist = artist;
+      this.getArtistData(artist.id);
+    });
     this.trackService.trackObservable.subscribe((track) => this.selectedTrack = track);
-
-    if (this.selectedArtist) {
-      this.getArtistData(this.selectedArtist.id);
-    }
   }
 
   onArtistSelect(artist) {
@@ -76,7 +75,7 @@ export class OverviewComponent implements OnInit {
     // this.router.navigate(['/overview']);
   }
 
-  getArtistData(artistID) {
+  getArtistData(artistID: string) {
     this.spotify.getArtistsTopTracks(artistID).subscribe(
       (topTracks) => {
         console.log(topTracks);
@@ -89,16 +88,17 @@ export class OverviewComponent implements OnInit {
         this.relatedArtists = relatedArtists.artists;
       }
     )
+    this.checkFollowing(artistID);
   }
 
-  // checkFollowing(id: string) {
-  //   // console.log('Cheking Follow status');
-  //   this.spotify.checkIfUserFollowsArtists([id]).subscribe(
-  //     (following) => {
-  //       // console.log(following);
-  //       this.following = following;
-  //     }
-  //   );
-  // }
+  checkFollowing(artistID: string) {
+    // console.log('Cheking Follow status');
+    this.spotify.checkIfUserFollowsArtists([artistID]).subscribe(
+      (following) => {
+        console.log(following);
+        this.following = following;
+      }
+    );
+  }
 
 }
