@@ -72,6 +72,11 @@ export class SpotifyService {
     return this.getQuery(url);
   }
 
+  checkIfUserSavedTrack(trackID: Array<string>) {
+    const url = `/me/following/contains?type=track&ids=${trackID}`;
+    return this.getQuery(url);
+  }
+
   getUserTopArtists(limit: number = 20, range: string = 'medium_term') {
     const url = `/me/top/artists?time_range=${range}&limit=${limit}`;
     return this.getQuery(url);
