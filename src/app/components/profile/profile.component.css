@@ -1,3 +1,7 @@
+img {
+  object-fit: contain;
+}
+
 .artist-carousel {
   margin: 5%;
   margin-left: 10%;
@@ -12,7 +16,7 @@
 .carousel-header {
   color: #949494;
   margin-bottom: 0;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .artist-title {
@@ -44,7 +48,7 @@
 }
 
 .artist-data {
-  margin-left: 15px;
+  margin-left: 20px;
   text-align: center;
 }
 
@@ -125,7 +129,7 @@ p {
     /* z-index: -1; */
   }
 
-  .image {
+  .profile-image {
     /* margin-left: 50%; */
     transition: width 0.5s;
   }
@@ -195,7 +199,7 @@ p {
     top: -10px; */
   }
 
-  .image {
+  .profile-image {
     margin-left: 10%;
     margin-right: -50px;
     box-shadow: #00000075 -10px 10px 30px;
@@ -323,7 +327,7 @@ p {
         margin-right: 0;
     } */
 
-    .image {
+    .profile-image {
       margin: 0;
       margin-left: 7.5%;
     }
@@ -357,9 +361,10 @@ p {
 
     .artist-data {
       font-size: 0.8em;
+      margin-left: 10px;
     }
 
-    .image {
+    .profile-image {
       /* margin-top: 17.5%; */
       margin-left: 10vw;
       width: 240px;
