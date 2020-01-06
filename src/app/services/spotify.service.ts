@@ -21,12 +21,12 @@ export class SpotifyService {
     return this.http.get(apiURL, { headers });
   }
 
-  putQuery(query: string): Observable<any> {
+  putQuery(query: string, body = null): Observable<any> {
     const apiURL = `https://api.spotify.com/v1${query}`;
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`
     });
-    return this.http.put(apiURL, {}, { headers });
+    return this.http.put(apiURL, body, { headers });
   }
 
   deleteQuery(query: string): Observable<any> {
@@ -95,6 +95,22 @@ export class SpotifyService {
   unfollowArtist(artistID) {
     const url = `/me/following?type=artist&ids=${artistID}`;
     return this.deleteQuery(url);
+  }
+
+  getCurrentPlaybackInfo() {
+    const url = `/me/player`;
+    return this.getQuery(url);
+  }
+
+  getUserAvailableDevices() {
+    const url = `/me/player/devices`;
+    return this.getQuery(url);
+  }
+
+  changeDevice(deviceID) {
+    const url = `/me/player`;
+    const deviceIDs = {device_ids:[deviceID]};
+    return this.putQuery(url, deviceIDs);
   }
 
 }

@@ -1,0 +1,58 @@
+<!-- <div *ngIf="currentTrack" class="player">
+    <img class="track-image" src="{{ currentTrack.album.images[0]?.url }}" alt="" width="70" height="70" />
+    <div>
+    <p class="track-name">
+      {{ currentTrack.name }}
+    </p>
+    <span class="artists-names">{{ currentTrack.artists[0].name }}</span>
+  </div>
+    <span class="duration">
+        {{ currentTrack.duration_ms | date: "mm:ss"}}
+    </span>
+    <div>
+      <p>Currently Playing</p>
+      <span class="tags"> {{device}} </span>
+    </div>
+</div> -->
+
+<div *ngIf="currentTrack" class="music-player">
+  <div class="music-player__now-playing">
+    <div class="music-player__song-info">
+      <div class="music-player__song-info-cover">
+        <img class="music-player__song-info-cover-img" src="{{currentTrack.album.images[0]?.url}}" alt="">
+      </div>
+      <div class="music-player__song-info-about">
+        <div class="music-player__song-info-name">
+        <a class="music-player__song-info-link music-player__song-info-link--song-name" href="#">{{currentTrack.name}}</a>
+        </div>
+        <div class="music-player__song-info-artist">
+          <a class="music-player__song-info-link music-player__song-info-link--artist-name" href="#">{{currentTrack.artists[0].name}}</a>
+        </div>
+      </div>
+    </div>
+    <!-- <button class="music-player__add-to-library control-button"></button> -->
+  </div>
+  <div class="music-player__controls">
+    <div class="music-player__controls-buttons">
+      <!-- <button class="music-player__controls-button music-player__controls-button--shuffle control-button"></button> -->
+      <button (click)="playPreviousSong()" class="music-player__controls-button music-player__controls-button--previous control-button"></button>
+      <button (click)="playSong()" class="music-player__controls-button music-player__controls-button--play control-button"></button>
+      <button (click)="playNextSong()" class="music-player__controls-button music-player__controls-button--next control-button"></button>
+      <!-- <button class="music-player__controls-button music-player__controls-button--repeat control-button"></button> -->
+    </div>
+    <div class="music-player__playback-bar">
+      <div class="music-player__playback-bar-curent-time">0:00</div>
+      <div (click)="handChangeCurrentSongTime($event)" #progressBar class="music-player__playback-bar-progress-bar">
+        <div #progressBarStatus class="music-player__playback-bar-progress-bar-state"></div>
+      </div>
+      <div class="music-player__playback-bar-time-left">{{currentTrack.duration_ms | date: "mm:ss"}}</div>
+    </div>
+  </div>
+  <div class="music-player__playback-settings">
+    <button class="music-player__playback-settings-song-list-button control-button"></button>
+    <button (click)="muteSong()" class="music-player__playback-settings-volume-button control-button"></button>
+    <div #volumeBar (click)="handChangeVolume($event)" class="music-player__playback-settings-volume-progress-bar">
+      <div #volumeStatus class="music-player__playback-settings-volume-progress-bar-state"></div>
+    </div>
+  </div>
+</div>

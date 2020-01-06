@@ -17,6 +17,7 @@ import { KeysComponent } from './components/charts/key-modes-chart/keys.componen
 import { ProfileComponent } from './components/profile/profile.component';
 import { AppInterceptorService } from './services/app-interceptor.service';
 import { LoginComponent } from './components/login/login.component';
+import { CurrentPlaybackComponent } from './components/current-playback/current-playback.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { LoginComponent } from './components/login/login.component';
     AudioFeaturesChartComponent,
     KeysComponent,
     ProfileComponent,
-    LoginComponent
+    LoginComponent,
+    CurrentPlaybackComponent
   ],
   imports: [
     BrowserAnimationsModule,

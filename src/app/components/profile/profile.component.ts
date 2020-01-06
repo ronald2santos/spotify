@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
-import { TrackService } from '../../services/track.service'
-import { ArtistService } from '../../services/artist.service'
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { TrackService } from '../../services/track.service';
+import { ArtistService } from '../../services/artist.service';
+import { FormControl, FormGroup } from '@angular/forms';
 import {Router} from '@angular/router';
 
 @Component({
@@ -24,7 +24,8 @@ export class ProfileComponent implements OnInit {
   timeRange: string;
   trackLimit: number;
 
-  constructor(private spotify: SpotifyService, private trackService: TrackService, private artistService: ArtistService,  private router: Router, private fb: FormBuilder) {
+  // tslint:disable-next-line: max-line-length
+  constructor(private spotify: SpotifyService, private trackService: TrackService, private artistService: ArtistService,  private router: Router) {
     this.timeRangeForm = new FormGroup({
       timeRangeSelector : this.timeRangeSelector
     });
@@ -120,7 +121,7 @@ export class ProfileComponent implements OnInit {
 
   logout() {
     // window.location.href = 'http://spotify-stats-angular.herokuapp.com/login';
-    window.localStorage.clear()
+    window.localStorage.clear();
     this.router.navigate(['/login']);
   }
 }

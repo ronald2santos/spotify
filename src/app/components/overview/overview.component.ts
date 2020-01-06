@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TrackService } from '../../services/track.service';
 import { ArtistService } from '../../services/artist.service';
 import { SpotifyService } from '../../services/spotify.service';
-import { Artist } from 'src/app/typing/artist';
 import { ActivatedRoute, Router } from '@angular/router';
 import { fadeInAnimation } from '../../router.animation';
 
@@ -13,6 +12,7 @@ import { fadeInAnimation } from '../../router.animation';
   styleUrls: ['./overview.component.css'],
   animations: [fadeInAnimation]
 })
+
 export class OverviewComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
@@ -84,10 +84,10 @@ export class OverviewComponent implements OnInit {
     );
     this.spotify.getRelatedArtists(artistID).subscribe(
       (relatedArtists) => {
-        console.log(relatedArtists)
+        console.log(relatedArtists);
         this.relatedArtists = relatedArtists.artists;
       }
-    )
+    );
     this.checkFollowing(artistID);
   }
 
