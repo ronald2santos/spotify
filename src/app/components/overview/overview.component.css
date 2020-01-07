@@ -12,6 +12,18 @@
   font-size: 8px;
   cursor: pointer;
 }
+/* 
+.chart.trackChart {
+  margin-bottom: 10%;
+} */
+
+.follow.play {
+ background-image: url('../../../assets/play.svg');
+ background-repeat: no-repeat;
+ background-position: 10% 50%;
+ background-size: 10px;
+ padding-left: 20px;
+ }
 
 .follow:hover {
   color: RGBA(231, 252, 255, 1);

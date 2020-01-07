@@ -113,4 +113,12 @@ export class SpotifyService {
     return this.putQuery(url, deviceIDs);
   }
 
+  playSongURI(deviceID, songURI) {
+    const url = `/me/player/play?device_id=${deviceID}`;
+    const URI = {
+      uris: [songURI]
+    };
+    return this.putQuery(url, URI);
+  }
+
 }

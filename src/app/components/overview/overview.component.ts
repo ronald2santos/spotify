@@ -50,6 +50,7 @@ export class OverviewComponent implements OnInit {
   duration: number;
   keyModeData: object;
   keyMode: string;
+  sdk;
 
 
   ngOnInit() {
@@ -117,6 +118,21 @@ export class OverviewComponent implements OnInit {
         this.checkFollowing(this.selectedArtist.id);
       }
     );
+  }
+
+  playSong() {
+    this.spotify.getUserAvailableDevices().subscribe(
+      (devices) => {
+        console.log(devices.devices[0])
+        console.log(this.selectedTrack)
+        this.spotify.playSongURI(devices.devices[0].id, this.selectedTrack.uri).subscribe(
+          (playing) => {
+            console.log(playing)
+          }
+        )
+      }
+    )
+    
   }
 
 }

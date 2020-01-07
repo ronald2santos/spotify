@@ -105,7 +105,10 @@
 
 <div *ngIf="selectedTrack" [@fade]="!selectedArtist" class="all">
   <div class="title">
-    <h1>{{ selectedTrack?.name }}</h1>
+  <div class="follow-title">
+      <h1>{{ selectedTrack?.name }}</h1>
+      <input class="follow play" type="button" value="Play song" (click)="playSong()" />
+  </div>
     <span class="followers">Popularity: {{ selectedTrack?.popularity }}% </span>
   </div>
   <div class="wrapper">
@@ -167,7 +170,7 @@
         </div>
       </div>
     </div>
-    <div class="chart">
+    <div class="chart trackChart">
       <app-audio-features-chart
         (tempo)="tempo = $event"
         (keyMode)="keyMode = $event"

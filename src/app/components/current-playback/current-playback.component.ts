@@ -10,8 +10,8 @@ export class CurrentPlaybackComponent implements OnInit {
 
   private isPlaying: boolean = false;
   private nowPlayingSongId: number;
-  private volumeProgress:string;
-  private volumePercentage:number = 100;
+  private volumeProgress:string = '70%';
+  private volumePercentage:number = 70;
   private updateVolumeToggle: boolean = false;
   private playbackProgress:string = 0;
   private playbackPercentage:number = 0;
@@ -37,7 +37,7 @@ export class CurrentPlaybackComponent implements OnInit {
 
     const sdk = new Player({
       name: 'Spotify Analitycs',
-      volume: 1.0,
+      volume: 0.7,
       getOAuthToken: callback => { callback(window.localStorage.getItem('Token')); }
     });
 

@@ -97,6 +97,7 @@
   height: 16px;
   background-size: contain;
 }
+
 .music-player__controls-button--shuffle:after {
   background-image: url('../../../assets/loop.svg');
 }
@@ -240,65 +241,22 @@
   background-color: #1db954;
 }
 
+@media only screen and (max-width: 640px) { 
 
-.tags {
-  font-size: 12px;
-  color: #949494;
-  margin-right: 10px;
+.music-player__controls-button--shuffle:after, .music-player__controls-button--previous:after, .music-player__controls-button--play:after, .music-player__controls-button--pause:after, .music-player__controls-button--next:after, .music-player__controls-button--repeat:after {
+  margin-top: 10px;
+  width: 12px;
+  height: 12px;
 }
 
-.track-artist-names {
-  display: flex;
-  flex-direction: row;
-  font-size: 0.6em;
-  justify-content: start;
+img {
+  width: 20%;
+  height: 20%;
+  margin-top: -12px;
 }
 
-.duration {
-  float: right;
-  margin-left: 20px;
-  font-size: 0.6em;
-  color: #949494;
+.music-player__song-info-link .music-player__song-info-link--song-name, .music-player__song-info-link .music-player__song-info-link--artist-name {
+  font-size: 0.7em;
 }
 
-.device {
-  font-size: 12px;
-  color: #949494;
-  margin-right: 10px;
-  /* top: -10px; */
-}
-
-.track-name {
-  font-size: 12px;
-  color: #949494;
-  margin: auto;
-}
-
-.artists-names {
-  font-size: 12px;
-  color: #94949485;
-  margin-right: 10px;
-}
-
-.player {
-  box-sizing: border-box;
-  width: 400px;
-  border-style: groove gray;
-  margin: auto;
-  padding: auto;
-  background-color:rgba(179, 179, 179, 0.061);
-  /*so things don't jump around*/
-  max-height: calc(800%);
-  overflow-y: auto;
-  animation: fadeIn 0.2s ease-in-out;
-  display: flex;
-  flex-direction: row;
-  /* justify-content: space-evenly; */
-  align-items: center;
-  margin-bottom: 5%;
-}
-
-.track-image {
-  object-fit: contain;
-  margin-right: 5%;
 }
