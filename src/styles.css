@@ -84,3 +84,11 @@ body .ui-button:enabled:hover {
 body .ui-carousel .ui-carousel-dots-container .ui-carousel-dot-item.ui-state-highlight .ui-carousel-dot-icon {
   background-color: #1db954;
 }
+
+::-moz-selection
+{
+    text-shadow: none;
+}
+::selection {
+    text-shadow: none;
+}
