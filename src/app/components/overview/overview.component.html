@@ -1,4 +1,4 @@
-<div *ngIf="selectedArtist" [@fade]="!selectedTrack" class="all">
+<div #targetArtist *ngIf="selectedArtist" [@fade]="!selectedTrack" class="all">
   <div class="title">
     <div class="follow-title">
       <h1>{{ selectedArtist?.name }}</h1>
@@ -28,7 +28,7 @@
         <div class="avg">
           <div>
             <h4 class="tempo">Avg Tempo</h4>
-            <span class="tags">{{ tempo }} BPM</span>
+            <span class="tags">{{ avgTempo }} BPM</span>
           </div>
           <div>
             <h4 class="tempo">Avg Song Duration</h4>
@@ -42,7 +42,7 @@
     </div>
     <div class="chart artist">
       <app-audio-features-chart
-        (tempo)="tempo = $event"
+        (avgTempo)="avgTempo = $event"
         (duration)="duration = $event"
         (keyModeData)="keyModeData = $event"
         [selectedArtist]="selectedArtist"
@@ -103,7 +103,9 @@
 
 </div>
 
-<div *ngIf="selectedTrack" [@fade]="!selectedArtist" class="all">
+<div *ngIf="selectedArtist" style="margin-top: -5%" #targetTrack></div>
+
+<div  *ngIf="selectedTrack" [@fade]="!selectedArtist" class="all">
   <div class="title">
   <div class="follow-title">
       <h1>{{ selectedTrack?.name }}</h1>
@@ -124,6 +126,8 @@
           <span
             class="tags"
             *ngFor="let artist of selectedTrack?.artists | slice: 0:6"
+            (click)="selectArtistFromTrack(artist.id)"
+            style="cursor: pointer;"
           >
             {{ artist.name }}
           </span>
@@ -179,3 +183,4 @@
     </div>
   </div>
 </div>
+

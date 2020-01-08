@@ -52,6 +52,11 @@ export class SpotifyService {
     return this.getQuery(url);
   }
 
+  getArtist(artistID: string) {
+    const url = `/artists/${artistID}`;
+    return this.getQuery(url);
+  }
+
   getArtistsTopTracks(artistID: string) {
     const url = `/artists/${artistID}/top-tracks?country=AR`;
     return this.getQuery(url);

@@ -58,6 +58,7 @@ export class SearchBarComponent implements OnInit {
   onArtistSelect(i: number) {
     this.selectedArtistIndex = i;
     this.selectedArtist = this.results[i];
+    console.log(this.selectedArtist);
     this.trackService.setSelectedTrack(null);
     this.artistService.setSelectedArtist(this.selectedArtist);
     this.router.navigate(['/overview']);

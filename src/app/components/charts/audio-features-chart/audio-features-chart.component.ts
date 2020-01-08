@@ -24,6 +24,7 @@ export class AudioFeaturesChartComponent implements OnChanges {
   @Input() selectedTrack;
   @Input() profileTracks;
   @Output() public tempo = new EventEmitter();
+  @Output() public avgTempo = new EventEmitter();
   @Output() public duration = new EventEmitter();
   @Output() public keyModeData = new EventEmitter();
   @Output() public keyMode = new EventEmitter();
@@ -312,7 +313,7 @@ export class AudioFeaturesChartComponent implements OnChanges {
     const count = {};
     keys.forEach((x) => { count[x.keyMode] = (count[x.keyMode] || 0) + 1; });
 
-    this.tempo.emit(avgTempo);
+    this.avgTempo.emit(avgTempo);
     this.duration.emit(avgDuration);
     this.keyModeData.emit(count);
 

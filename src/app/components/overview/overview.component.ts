@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TrackService } from '../../services/track.service';
 import { ArtistService } from '../../services/artist.service';
 import { SpotifyService } from '../../services/spotify.service';
@@ -40,12 +40,17 @@ export class OverviewComponent implements OnInit {
       }
     ];
   }
+
+  @ViewChild('targetTrack', { static: false }) trackDiv: ElementRef;
+  @ViewChild('targetArtist', { static: false }) artistDiv: ElementRef;
+
   responsiveOptions;
   selectedArtist;
   selectedTrack;
   topTracks;
   relatedArtists;
   following: boolean;
+  avgTempo: number;
   tempo: number;
   duration: number;
   keyModeData: object;
@@ -56,7 +61,9 @@ export class OverviewComponent implements OnInit {
   ngOnInit() {
     this.artistService.artistObservable.subscribe((artist) => {
       this.selectedArtist = artist;
-      this.getArtistData(artist.id);
+      if (artist) {
+        this.getArtistData(artist.id);
+      }
     });
     this.trackService.trackObservable.subscribe((track) => this.selectedTrack = track);
   }
@@ -66,14 +73,24 @@ export class OverviewComponent implements OnInit {
     this.trackService.setSelectedTrack(null);
     this.artistService.setSelectedArtist(this.selectedArtist);
     this.getArtistData(artist.id);
-    // this.router.navigate(['/overview']);
+    this.artistDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    this.router.navigate(['/overview']);
   }
 
   onTrackSelect(track) {
     this.selectedTrack = track;
-    this.artistService.setSelectedArtist(null);
+    // this.artistService.setSelectedArtist(null);
+    this.trackDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     this.trackService.setSelectedTrack(this.selectedTrack);
     // this.router.navigate(['/overview']);
+  }
+
+  selectArtistFromTrack(artistID: string) {
+    this.spotify.getArtist(artistID).subscribe(
+      (artist) => {
+        this.onArtistSelect(artist);
+      }
+    );
   }
 
   getArtistData(artistID: string) {
@@ -123,16 +140,17 @@ export class OverviewComponent implements OnInit {
   playSong() {
     this.spotify.getUserAvailableDevices().subscribe(
       (devices) => {
-        console.log(devices.devices[0])
-        console.log(this.selectedTrack)
-        this.spotify.playSongURI(devices.devices[0].id, this.selectedTrack.uri).subscribe(
+        console.log(devices);
+        console.log(this.selectedTrack);
+        const device = devices.devices.filter((e) => e.name === 'Spotify Analytics');
+        console.log(device[0]);
+        this.spotify.playSongURI(device[0].id, this.selectedTrack.uri).subscribe(
           (playing) => {
-            console.log(playing)
+            console.log(playing);
           }
-        )
+        );
       }
-    )
-    
+    );
   }
 
 }
