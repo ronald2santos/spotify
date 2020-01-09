@@ -7,9 +7,6 @@
     <app-nav-bar></app-nav-bar>
 </div>
 
-<div [@routeAnimations]="o && o.activatedRouteData
-      && o.activatedRouteData['animation']"
-      [@fade]="o"
-      >
+<div [@routeAnimations]="o && o.activatedRouteData && o.activatedRouteData['animation']" [@fade]="o">
     <router-outlet #o="outlet"></router-outlet>
 </div>
