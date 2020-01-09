@@ -144,7 +144,7 @@ export class OverviewComponent implements OnInit {
         console.log(this.selectedTrack);
         const device = devices.devices.filter((e) => e.name === 'Spotify Analytics');
         console.log(device[0]);
-        this.spotify.playSongURI(device[0].id, this.selectedTrack.uri).subscribe(
+        this.spotify.playTrackURI(device[0].id, this.selectedTrack.uri).subscribe(
           (playing) => {
             console.log(playing);
           }

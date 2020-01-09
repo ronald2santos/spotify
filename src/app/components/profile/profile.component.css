@@ -27,6 +27,7 @@ img {
   /* margin-left: -5%; */
   margin: auto;
   font-size: 0.8em;
+  margin-top: 5px;
 }
 
 .artist-subtitle {
@@ -37,7 +38,9 @@ img {
 }
 
 .artist-image {
-  margin-left: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .artist-details, .track-details, .artist-data {
@@ -49,8 +52,9 @@ img {
 }
 
 .artist-data {
-  margin-left: 20px;
   text-align: center;
+  margin: auto;
+  padding: auto;
 }
 
 .artist-details:hover {
@@ -362,7 +366,7 @@ p {
 
     .artist-data {
       font-size: 0.8em;
-      margin-left: 10px;
+      /* margin-left: 10px; */
     }
 
     .profile-image {

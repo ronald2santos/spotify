@@ -141,6 +141,10 @@
   -moz-outline-style: none;
 }
 
+.music-player__song-info:hover {
+  cursor: pointer;
+}
+
 .music-player__playback-bar {
   width: 100%;
   display: flex;
@@ -204,7 +208,7 @@
 
 .music-player__playback-settings-volume-progress-bar {
   box-sizing: border-box;
-  display: inline-block;  
+  display: inline-block;
   position: relative;
   width: 82px;
   height: 4px;
@@ -241,7 +245,7 @@
   background-color: #1db954;
 }
 
-@media only screen and (max-width: 640px) { 
+@media only screen and (max-width: 640px) {
 
 .music-player__controls-button--shuffle:after, .music-player__controls-button--previous:after, .music-player__controls-button--play:after, .music-player__controls-button--pause:after, .music-player__controls-button--next:after, .music-player__controls-button--repeat:after {
   margin-top: 10px;
@@ -252,7 +256,7 @@
 img {
   width: 20%;
   height: 20%;
-  margin-top: -12px;
+  /* margin-top: -12px; */
 }
 
 .music-player__song-info-link .music-player__song-info-link--song-name, .music-player__song-info-link .music-player__song-info-link--artist-name {

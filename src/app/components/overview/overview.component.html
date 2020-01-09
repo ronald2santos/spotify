@@ -55,7 +55,7 @@
     >
   </div> -->
 
-  <div class="track-carousel">
+  <div  class="track-carousel">
 
     <p-carousel [value]="topTracks" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions" >
       <p-header>
@@ -78,7 +78,7 @@
 
   </div>
 
-  <div class="artist-carousel">
+  <div *ngIf="relatedArtists.length > 0" class="artist-carousel">
 
     <p-carousel [value]="relatedArtists" [numVisible]="10" [numScroll]="5" [circular]="false"  [responsiveOptions]="responsiveOptions">
       <p-header>

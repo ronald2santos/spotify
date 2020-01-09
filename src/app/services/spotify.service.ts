@@ -118,12 +118,17 @@ export class SpotifyService {
     return this.putQuery(url, deviceIDs);
   }
 
-  playSongURI(deviceID, songURI) {
+  playTrackURI(deviceID, trackURI) {
     const url = `/me/player/play?device_id=${deviceID}`;
     const URI = {
-      uris: [songURI]
+      uris: [trackURI]
     };
     return this.putQuery(url, URI);
+  }
+
+  pausePlayback() {
+    const url = `/me/player/pause`;
+    return this.putQuery(url);
   }
 
 }

@@ -49,7 +49,7 @@ body .ui-carousel .ui-carousel-content .ui-carousel-prev, body .ui-carousel .ui-
   border: none;
   border-radius: 50%;
   margin: 0.2em;
-  margin-top: -2vh;
+  margin-top: -1.8vh;
   margin-left: 3%;
   color: #333333;
   transition: color 0.2s;
@@ -83,6 +83,10 @@ body .ui-button:enabled:hover {
 
 body .ui-carousel .ui-carousel-dots-container .ui-carousel-dot-item.ui-state-highlight .ui-carousel-dot-icon {
   background-color: #1db954;
+}
+
+body .ui-carousel-items-content {
+  margin-left: 3%;
 }
 
 ::-moz-selection

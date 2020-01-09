@@ -102,6 +102,8 @@ export class AudioFeaturesChartComponent implements OnChanges {
       easing: 'easeInQuad',
     },
     tooltips: {
+      titleFontSize: 11,
+      bodyFontSize: 10,
       callbacks: {
         label: (tooltipItem, data) => {
           // console.log(tooltipItem);

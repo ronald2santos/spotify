@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
+import { TrackService } from '../../services/track.service';
+import { ArtistService } from '../../services/artist.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-current-playback',
@@ -17,8 +22,10 @@ export class CurrentPlaybackComponent implements OnInit {
   private playbackPercentage: number = 0;
   private updatePlaybackToggle: boolean = false;
   currentPlaybackPosition: number;
+  previousVolume: number;
 
-  constructor(private spotify: SpotifyService) { }
+  // tslint:disable-next-line: max-line-length
+  constructor(private router: Router, private spotify: SpotifyService, private artistService: ArtistService, private trackService: TrackService) { }
 
   currentTrack;
   device;
@@ -46,13 +53,24 @@ export class CurrentPlaybackComponent implements OnInit {
 
     if (connected) {
 
-      // sdk.addListener('ready', ({ device_id }) => {
-      //   this.spotify.changeDevice(device_id).subscribe(
-      //     (response) => {
-      //       console.log(response);
-      //     }
-      //   );
-      // });
+      sdk.addListener('ready', ({ device_id }) => {
+        this.spotify.getCurrentPlaybackInfo().subscribe(
+          (playbackInfo) => {
+            console.log(playbackInfo);
+            if (!playbackInfo || !playbackInfo.is_playing) {
+              this.spotify.changeDevice(device_id).subscribe(
+                (response) => {
+                  console.log(response);
+                }
+              );
+            } else {
+              // if no playback from other spotify player set platying true when new play song is triggered in app
+              this.isPlaying = true;
+              this.startTimer();
+            }
+          }
+        );
+      });
 
       sdk.addListener('player_state_changed', ({
         track_window: { current_track }
@@ -81,6 +99,7 @@ export class CurrentPlaybackComponent implements OnInit {
 
 
   playTrack(): void {
+    console.log(this.state);
     if (this.isPlaying) {
       this.pauseTrack();
       return;
@@ -120,24 +139,27 @@ export class CurrentPlaybackComponent implements OnInit {
   }
 
   playPreviousTrack(): void {
-    this.stopTimer();
-    this.sdk.previousTrack().then(() => {
-      this.isPlaying = true;
-      this.playbackProgress = '0%';
-      this.playbackPercentage = 0;
-      this.startTimer();
-    }).catch(() => this.stopTimer());
-
+    if (this.state.track_window.previous_tracks.length > 0) {
+      this.stopTimer();
+      this.sdk.previousTrack().then(() => {
+        this.isPlaying = true;
+        this.playbackProgress = '0%';
+        this.playbackPercentage = 0;
+        this.startTimer();
+      }).catch(() => this.stopTimer());
+    }
   }
 
   playNextTrack(): void {
-    this.stopTimer();
-    this.sdk.nextTrack().then(() => {
-      this.isPlaying = true;
-      this.playbackProgress = '0%';
-      this.playbackPercentage = 0;
-      this.startTimer();
-    }).catch(() => this.stopTimer());
+    if (this.state.track_window.next_tracks.length > 0) {
+      this.stopTimer();
+      this.sdk.nextTrack().then(() => {
+        this.isPlaying = true;
+        this.playbackProgress = '0%';
+        this.playbackPercentage = 0;
+        this.startTimer();
+      }).catch(() => this.stopTimer());
+    }
   }
 
   getVolume() {
@@ -197,6 +219,7 @@ export class CurrentPlaybackComponent implements OnInit {
     this.updatePlaybackToggle = false;
   }
 
+
   updatePlayback(event, data) {
     if (this.updatePlaybackToggle) {
 
@@ -234,6 +257,27 @@ export class CurrentPlaybackComponent implements OnInit {
     this.sdk.seek(this.currentPlaybackPosition).then();
 
     this.playbackProgress = this.playbackPercentage + '%';
+  }
+
+  muteSong() {
+    if(this.volumePercentage > 0) {
+      this.sdk.setVolume(0).then();
+      this.previousVolume = this.volumePercentage;
+      this.volumePercentage = 0;
+      this.volumeProgress = '0%';
+    } else {
+      this.sdk.setVolume(this.previousVolume / 100).then();
+      this.volumePercentage = this.previousVolume;
+      this.volumeProgress = this.previousVolume + '%';
+    }
+
+  }
+
+  onTrackSelect() {
+    // this.spotify
+    this.artistService.setSelectedArtist(null);
+    this.trackService.setSelectedTrack(this.state.track_window.current_track);
+    this.router.navigate(['/overview']);
   }
 
 }
