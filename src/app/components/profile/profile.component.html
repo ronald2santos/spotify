@@ -1,138 +1,110 @@
 <div *ngIf="user" class="all">
-  <div class="title">
-    <div class="logout-title">
-    <h1>{{ user.display_name }}</h1>
-    <input class="logout" type="button" value="Logout" (click)="logout()"/>
+    <div class="title">
+        <div class="logout-title">
+            <h1>{{ user.display_name }}</h1>
+            <input class="logout" type="button" value="Logout" (click)="logout()" />
+        </div>
+        <span class="followers">Country: {{ user.country }} | {{ user?.followers.total }} followers </span>
     </div>
-    <span class="followers"
-      >Country: {{ user.country }} | {{ user?.followers.total }} followers
-    </span>
-  </div>
-  <div class="wrapper">
-    <div class="image">
-      <img class="profile-image" src="{{ user.images[0]?.url }}" width="320" />
-    </div>
-    <div class="chart">
-      <app-audio-features-chart
-        [profileTracks]="tracks"
-      ></app-audio-features-chart>
-    </div>
-    <div class="button-wrapper">
-      <h4 class="tempo">Choose how to show your data:</h4>
-      <div class="radio-wrapper">
-        <form [formGroup]="timeRangeForm" class="radio-group">
-          <div class="radio-button">
-            <input
-              [formControl]="timeRangeSelector"
-              formControlName="timeRangeSelector"
-              type="radio"
-              value="short_term"
-              id="Last Month"
-            />
-            <label for="Last Month">Last Month</label>
-          </div>
-          <div class="radio-button">
-            <input
-              [formControl]="timeRangeSelector"
-              formControlName="timeRangeSelector"
-              type="radio"
-              value="medium_term"
-              id="Last 6 Months"
-            />
-            <label for="Last 6 Months">Last 6 Months</label>
-          </div>
-          <div class="radio-button">
-            <input
-              [formControl]="timeRangeSelector"
-              formControlName="timeRangeSelector"
-              type="radio"
-              value="long_term"
-              id="All Time"
-            />
-            <label for="All Time">All Time</label>
-          </div>
-        </form>
-        <form [formGroup]="trackLimitForm" class="radio-group">
-          <div class="radio-button">
-            <input
-              [formControl]="trackLimitSelector"
-              formControlName="trackLimitSelector"
-              type="radio"
-              value="10"
-              id="10"
-            />
-            <label for="10">Top 10</label>
-          </div>
-          <div class="radio-button">
-            <input
-              [formControl]="trackLimitSelector"
-              formControlName="trackLimitSelector"
-              type="radio"
-              value="20"
-              id="20"
-            />
-            <label for="20">Top 20</label>
-          </div>
-          <div class="radio-button">
-            <input
-              [formControl]="trackLimitSelector"
-              formControlName="trackLimitSelector"
-              type="radio"
-              value="50"
-              id="50"
-            />
-            <label for="50">Top 50</label>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-<div class="artist-carousel">
-
-  <p-carousel [value]="artists" [numVisible]="10" [numScroll]="5" [circular]="false"  [responsiveOptions]="responsiveOptions">
-    <p-header>
-        <h3 class="carousel-header">Top Artists</h3>
-    </p-header>
-    <ng-template let-artist pTemplate="item">
-        <div class="artist-details" (click)="onArtistSelect(artist)">
-            <div class="p-grid p-nogutter">
-                <div class="p-col-12 artist-image">
-                    <img src="{{ artist.images[0]?.url }}" height="120" width="120" />
-                </div>
-                <div class="p-col-12 artist-data">
-                    <div class="artist-title">{{artist.name}}</div>
-                    <!-- <div class="artist-subtitle">{{artist.followers}}</div> -->
-                </div>
+    <div class="wrapper">
+        <div class="image">
+            <img class="profile-image" src="{{ user.images[0]?.url }}" width="320" />
+        </div>
+        <div class="chart">
+            <app-audio-features-chart [profileTracks]="tracks"></app-audio-features-chart>
+        </div>
+        <div class="button-wrapper">
+            <h4 class="tempo">Choose how to show your data:</h4>
+            <div class="radio-wrapper">
+                <form [formGroup]="timeRangeForm" class="radio-group">
+                    <div class="radio-button">
+                        <input
+                            [formControl]="timeRangeSelector"
+                            formControlName="timeRangeSelector"
+                            type="radio"
+                            value="short_term"
+                            id="Last Month"
+                        />
+                        <label for="Last Month">Last Month</label>
+                    </div>
+                    <div class="radio-button">
+                        <input
+                            [formControl]="timeRangeSelector"
+                            formControlName="timeRangeSelector"
+                            type="radio"
+                            value="medium_term"
+                            id="Last 6 Months"
+                        />
+                        <label for="Last 6 Months">Last 6 Months</label>
+                    </div>
+                    <div class="radio-button">
+                        <input
+                            [formControl]="timeRangeSelector"
+                            formControlName="timeRangeSelector"
+                            type="radio"
+                            value="long_term"
+                            id="All Time"
+                        />
+                        <label for="All Time">All Time</label>
+                    </div>
+                </form>
+                <form [formGroup]="trackLimitForm" class="radio-group">
+                    <div class="radio-button">
+                        <input [formControl]="trackLimitSelector" formControlName="trackLimitSelector" type="radio" value="10" id="10" />
+                        <label for="10">Top 10</label>
+                    </div>
+                    <div class="radio-button">
+                        <input [formControl]="trackLimitSelector" formControlName="trackLimitSelector" type="radio" value="20" id="20" />
+                        <label for="20">Top 20</label>
+                    </div>
+                    <div class="radio-button">
+                        <input [formControl]="trackLimitSelector" formControlName="trackLimitSelector" type="radio" value="50" id="50" />
+                        <label for="50">Top 50</label>
+                    </div>
+                </form>
             </div>
         </div>
-    </ng-template>
-</p-carousel>
+    </div>
 
-</div>
-
-<div class="track-carousel">
-
-  <p-carousel [value]="tracks" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions" >
-    <p-header>
-        <h3 class="carousel-header">Top Tracks</h3>
-    </p-header>
-    <ng-template let-track pTemplate="item">
-        <div class="track-details" (click)="onTrackSelect(track)">
-            <div class="p-grid p-nogutter">
-                <div class="p-col-12 artist-image">
-                    <img src="{{ track.album.images[0]?.url }}" height="120" width="120" />
+    <div class="artist-carousel">
+        <p-carousel [value]="artists" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <p-header>
+                <h3 class="carousel-header">Top Artists</h3>
+            </p-header>
+            <ng-template let-artist pTemplate="item">
+                <div class="artist-details" (click)="onArtistSelect(artist)">
+                    <div class="p-grid p-nogutter">
+                        <div class="p-col-12 artist-image">
+                            <img src="{{ artist.images[0]?.url }}" height="120" width="120" />
+                        </div>
+                        <div class="p-col-12 artist-data">
+                            <div class="artist-title">{{ artist.name }}</div>
+                            <!-- <div class="artist-subtitle">{{artist.followers}}</div> -->
+                        </div>
+                    </div>
                 </div>
-                <div class="p-col-12 artist-data">
-                    <div class="artist-title">{{track.name}}</div>
-                    <div class="artist-subtitle">{{track.artists[0].name}}</div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+    <div class="track-carousel">
+        <p-carousel [value]="tracks" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <p-header>
+                <h3 class="carousel-header">Top Tracks</h3>
+            </p-header>
+            <ng-template let-track pTemplate="item">
+                <div class="track-details" (click)="onTrackSelect(track)">
+                    <div class="p-grid p-nogutter">
+                        <div class="p-col-12 artist-image">
+                            <img src="{{ track.album.images[0]?.url }}" height="120" width="120" />
+                        </div>
+                        <div class="p-col-12 artist-data">
+                            <div class="artist-title">{{ track.name }}</div>
+                            <div class="artist-subtitle">{{ track.artists[0].name }}</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </ng-template>
-</p-carousel>
-
-</div>
-
-
+            </ng-template>
+        </p-carousel>
+    </div>
 </div>

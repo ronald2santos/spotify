@@ -3,10 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {CarouselModule} from 'primeng/carousel';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'primeng/carousel';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,34 +16,33 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AppInterceptorService } from './services/app-interceptor.service';
 import { LoginComponent } from './components/login/login.component';
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchBarComponent,
-    NavBarComponent,
-    routingComponents,
-    AudioFeaturesChartComponent,
-    KeysComponent,
-    ProfileComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    ChartsModule,
-    CarouselModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass:  AppInterceptorService,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        SearchBarComponent,
+        NavBarComponent,
+        routingComponents,
+        AudioFeaturesChartComponent,
+        KeysComponent,
+        ProfileComponent,
+        LoginComponent,
+    ],
+    imports: [
+        BrowserAnimationsModule,
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        ChartsModule,
+        CarouselModule,
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AppInterceptorService,
+            multi: true,
+        },
+    ],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
