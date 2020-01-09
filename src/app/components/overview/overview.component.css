@@ -12,10 +12,6 @@
   font-size: 8px;
   cursor: pointer;
 }
-/*
-.chart.trackChart {
-  margin-bottom: 10%;
-} */
 
 .follow.play {
  background-image: url('../../../assets/play-white.svg');
