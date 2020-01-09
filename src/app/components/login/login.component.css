@@ -6,10 +6,18 @@
     height: 30px;
     outline: none;
     border: none;
-    background-color: #1db954;
+    background-color: #1db954c7;
     border-radius: 30px;
-    color: RGBA(231, 252, 255, 1);
+    color: RGBA(231, 252, 255, 0.7);
     font-weight: 400;
     font-size: 12px;
     text-transform: uppercase;
+    cursor: pointer;
 }
+
+.login:hover {
+  background-color: #1db954;
+  color: RGBA(231, 252, 255, 1);
+}
+
+

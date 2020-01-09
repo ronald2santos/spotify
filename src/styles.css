@@ -1,45 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
+@import '~primeicons/primeicons.css';
+@import '~primeng/resources/themes/nova-dark/theme.css';
+@import '~primeng/resources/primeng.min.css';
 
 html {
-    scrollbar-face-color: #121212;
-    scrollbar-base-color: #121212;
-    scrollbar-3dlight-color: #121212;
-    scrollbar-highlight-color: #121212;
-    scrollbar-track-color: #000;
-    scrollbar-arrow-color: #000;
-    scrollbar-shadow-color: #121212;
-    scrollbar-dark-shadow-color: #121212;
+  scrollbar-face-color: #121212;
+  scrollbar-base-color: #121212;
+  scrollbar-3dlight-color: #121212;
+  scrollbar-highlight-color: #121212;
+  scrollbar-track-color: #000;
+  scrollbar-arrow-color: #000;
+  scrollbar-shadow-color: #121212;
+  scrollbar-dark-shadow-color: #121212;
 }
 
-::-webkit-scrollbar {
-    width: 8px;
-    height: 3px;
-}
-::-webkit-scrollbar-button {
-    background-color: #121212;
-}
-::-webkit-scrollbar-track {
-    background-color: #121212;
-}
-::-webkit-scrollbar-track-piece {
-    background-color: #000;
-}
-::-webkit-scrollbar-thumb {
-    height: 50px;
-    background-color: #121212;
-    border-radius: 3px;
-}
-::-webkit-scrollbar-corner {
-    background-color: #121212;
-}
-::-webkit-resizer {
-    background-color: #121212;
-}
+::-webkit-scrollbar { width: 8px; height: 3px;}
+::-webkit-scrollbar-button {  background-color: #121212; }
+::-webkit-scrollbar-track {  background-color: #121212;}
+::-webkit-scrollbar-track-piece { background-color: #000;}
+::-webkit-scrollbar-thumb { height: 50px; background-color: #121212; border-radius: 3px;}
+::-webkit-scrollbar-corner { background-color: #121212;}
+::-webkit-resizer { background-color: #121212;}
 
 body {
-    background-color: #121212;
-    width: 100%;
-    height: 100%;
-    font-family: 'Didact Gothic', sans-serif;
+  background-color: #121212;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Didact Gothic', sans-serif;
+}
+
+
+
+body .ui-carousel-items-content .artist-details {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+
+body .ui-carousel-items-content .track-details {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+body .ui-carousel .ui-carousel-content .ui-carousel-prev, body .ui-carousel .ui-carousel-content .ui-carousel-next {
+  background-color: #ffffff18;
+  border: none;
+  border-radius: 50%;
+  margin: 0.2em;
+  margin-top: -2vh;
+  margin-left: 3%;
+  color: #333333;
+  transition: color 0.2s;
+}
+
+body .ui-button {
+  margin: 0;
+  color: #ffffff48;
+  background-color: #1db954;
+  border: 1px solid #1db954;
+  font-size: 0.8em;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+body .ui-button span {
+  color: #ffffff;
+}
+
+body .ui-button:enabled:focus {
+  background-color: #ffffff1f;
+  border: none;
+  /* border: 1px solid #1db954; */
+  box-shadow: none;
+}
+
+body .ui-button:enabled:hover {
+  background-color: #1db954;
+  color: #ffffff21;
+  border: none;
+}
+
+body .ui-carousel .ui-carousel-dots-container .ui-carousel-dot-item.ui-state-highlight .ui-carousel-dot-icon {
+  background-color: #1db954;
 }

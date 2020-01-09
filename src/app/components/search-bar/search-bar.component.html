@@ -1,50 +1,48 @@
 <section class="filter-wrapper">
-    <div class="options">
-        <div class="radio-button">
-            <label>Search Artists</label>
-            <input [formControl]="radioButton" type="radio" value="artists" />
-        </div>
-        <div class="radio-button">
-            <label>Search Tracks</label>
-            <input [formControl]="radioButton" type="radio" value="tracks" />
-        </div>
+  <div class="options">
+    <div class="radio-button">
+        <label>Search Artists</label>
+        <input [formControl]="radioButton" type="radio" value="artists">
     </div>
-    <div class="keyword-wrapper">
-        <input [formControl]="queryField" type="text" id="keyword" placeholder="Search for {{ selectedOption }}..." autofocus />
+    <div class="radio-button">
+        <label>Search Tracks</label>
+        <input [formControl]="radioButton" type="radio" value="tracks">
     </div>
-    <ul *ngIf="results.length > 0 && selectedOption === 'artists'" class="filter-select">
-        <li *ngFor="let artist of results; let i = index" class="filter-select-list" (click)="onArtistSelect(i)">
-            <img class="artist-image" src="{{ artist.images['2']?.url }}" alt="" width="50" height="50" />
-            <img
-                style="margin-left: -20px;"
-                *ngIf="!artist.images['2']?.url"
-                class="artist-image"
-                src="../../../assets/spotify-logo.png"
-                alt=""
-                width="50"
-                height="50"
-            />
-            <p class="artist-name">
-                {{ artist.name }}
-            </p>
-            <!-- <span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span> -->
-            <span class="popularity">Popularity {{ artist.popularity }}%</span>
-        </li>
-    </ul>
+  </div>
+  <div class="keyword-wrapper">
+    <input
+      [formControl]="queryField"
+      type="text"
+      id="keyword"
+      placeholder="Search for {{selectedOption}}..."
+      autofocus
+    />
+  </div>
+  <ul *ngIf="results.length > 0 && selectedOption === 'artists'" class="filter-select">
+    <li *ngFor="let artist of results; let i = index" [ngStyle]="{'animation-delay': i*0.05 + 's'}" class="filter-select-list" (click)="onArtistSelect(i)">
+      <img class="artist-image" src="{{ artist.images['2']?.url }}" alt="" width="50" height="50" />
+      <img style="margin-left: -20px;" *ngIf="!artist.images['2']?.url" class="artist-image" src="../../../assets/spotify-logo.png" alt="" width="50" height="50" />
+      <p class="artist-name">
+        {{ artist.name }}
+      </p>
+      <!-- <span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span> -->
+      <span class="popularity">Popularity {{ artist.popularity }}%</span>
+    </li>
+  </ul>
 
-    <ul *ngIf="results.length > 0 && selectedOption === 'tracks'" class="filter-select">
-        <li *ngFor="let track of results; let i = index" class="filter-select-list" (click)="onTrackSelect(i)">
-            <img class="track-image" src="{{ track.album.images['0']?.url }}" alt="" width="50" height="50" />
-            <p class="artist-name">
-                {{ track.name }}
-            </p>
-            <!-- <span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span> -->
-            <div class="track-artist-names">
-                <span *ngFor="let artist of track.artists" class="artists-names">{{ artist.name }}</span>
-            </div>
-            <span class="duration">
-                {{ track.duration_ms | date: 'mm:ss' }}
-            </span>
-        </li>
+  <ul *ngIf="results.length > 0 && selectedOption === 'tracks'" class="filter-select">
+      <li *ngFor="let track of results; let i = index"  [ngStyle]="{'margin-bottom': '-20px', 'animation-delay': i*0.05 + 's'}" class="filter-select-list" (click)="onTrackSelect(i)">
+        <img class="track-image" src="{{ track.album.images['0']?.url }}" alt="" width="50" height="50" />
+        <p class="artist-name">
+          {{ track.name }}
+        </p>
+        <!-- <span class="tags" *ngFor='let genre of result?.genres | slice:0:6'>{{genre}}</span> -->
+        <div class="track-artist-names">
+            <span *ngFor="let artist of track.artists" class="artists-names">{{ artist.name }}</span>
+        </div>
+        <span class="duration">
+            {{ track.duration_ms | date: "mm:ss"}}
+        </span>
+      </li>
     </ul>
 </section>
