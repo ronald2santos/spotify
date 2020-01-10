@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { TrackService } from '../../services/track.service';
 import { ArtistService } from '../../services/artist.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
+declare global {
+  interface Window { Spotify: any; onSpotifyWebPlaybackSDKReady: any; }
+}
 
 
 @Component({
@@ -13,19 +16,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CurrentPlaybackComponent implements OnInit {
 
-  private isPlaying: boolean = false;
+  isPlaying = false;
   private nowPlayingSongId: number;
-  volumeProgress: string = '70%';
-  private volumePercentage: number = 70;
-  private updateVolumeToggle: boolean = false;
-  private playbackProgress: string = '0%';
-  private playbackPercentage: number = 0;
-  private updatePlaybackToggle: boolean = false;
+  volumeProgress = '70%';
+  private volumePercentage = 70;
+  private updateVolumeToggle = false;
+  playbackProgress = '0%';
+  private playbackPercentage = 0;
+  private updatePlaybackToggle = false;
   currentPlaybackPosition: number;
   previousVolume: number;
 
   // tslint:disable-next-line: max-line-length
   constructor(private router: Router, private spotify: SpotifyService, private artistService: ArtistService, private trackService: TrackService) { }
+
 
   currentTrack;
   device;
@@ -35,11 +39,10 @@ export class CurrentPlaybackComponent implements OnInit {
 
   ngOnInit() {
     this.loadPlayer();
-    this.getVolume();
   }
 
   async loadPlayer() {
-    const { Player } = await this.waitForSpotifyWebPlaybackSDKToLoad();
+    const { Player }: any = await this.waitForSpotifyWebPlaybackSDKToLoad();
 
     const sdk = new Player({
       name: 'Spotify Analytics',
@@ -97,7 +100,6 @@ export class CurrentPlaybackComponent implements OnInit {
     });
   }
 
-
   playTrack(): void {
     console.log(this.state);
     if (this.isPlaying) {
@@ -120,6 +122,8 @@ export class CurrentPlaybackComponent implements OnInit {
     });
   }
 
+  /// Playback progress
+
   startTimer() {
     if (this.isPlaying) {
       this.timer = setInterval(() => {
@@ -137,6 +141,8 @@ export class CurrentPlaybackComponent implements OnInit {
   stopTimer() {
     clearInterval(this.timer);
   }
+
+  ////
 
   playPreviousTrack(): void {
     if (this.state.track_window.previous_tracks.length > 0) {
@@ -168,15 +174,15 @@ export class CurrentPlaybackComponent implements OnInit {
     });
   }
 
-  startUpdateVolume(data) {
+  startUpdateVolume() {
     this.updateVolumeToggle = true;
   }
 
-  endUpdateVolume(data) {
+  endUpdateVolume() {
     this.updateVolumeToggle = false;
   }
 
-  updateVolume(event, data) {
+  updateVolume(event) {
     if (this.updateVolumeToggle) {
 
       this.volumePercentage = Math.floor(
@@ -211,16 +217,16 @@ export class CurrentPlaybackComponent implements OnInit {
     this.volumeProgress = this.volumePercentage + '%';
   }
 
-  startUpdatePlayback(data) {
+  startUpdatePlayback() {
     this.updatePlaybackToggle = true;
   }
 
-  endUpdatePlayback(data) {
+  endUpdatePlayback() {
     this.updatePlaybackToggle = false;
   }
 
 
-  updatePlayback(event, data) {
+  updatePlayback(event) {
     if (this.updatePlaybackToggle) {
 
       this.playbackPercentage = Math.floor(
@@ -260,7 +266,7 @@ export class CurrentPlaybackComponent implements OnInit {
   }
 
   muteSong() {
-    if(this.volumePercentage > 0) {
+    if (this.volumePercentage > 0) {
       this.sdk.setVolume(0).then();
       this.previousVolume = this.volumePercentage;
       this.volumePercentage = 0;
@@ -274,7 +280,6 @@ export class CurrentPlaybackComponent implements OnInit {
   }
 
   onTrackSelect() {
-    // this.spotify
     this.artistService.setSelectedArtist(null);
     this.trackService.setSelectedTrack(this.state.track_window.current_track);
     this.router.navigate(['/overview']);

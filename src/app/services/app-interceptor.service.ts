@@ -16,13 +16,11 @@ export class AppInterceptorService implements HttpInterceptor {
     return next.handle(req)
       .pipe(
         catchError(
-          // this.handleError
           (error: HttpErrorResponse) => {
             console.log(error);
             console.log(this.router);
             if (error.status === 401) {
               window.localStorage.clear();
-              // window.location.href = 'http://localhost:8888/refresh';
               this.router.navigate(['/login']);
             }
             return throwError(error);
@@ -30,15 +28,4 @@ export class AppInterceptorService implements HttpInterceptor {
         )
       );
   }
-
-  // handleError(error: HttpErrorResponse) {
-  //   console.log(error);
-  //   console.log(this.router);
-  //   if (error.status === 401) {
-  //     window.localStorage.clear();
-  //     this.router.navigate(['/login']);
-  //   }
-  //   return throwError(error);
-  // }
-
 }

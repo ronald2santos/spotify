@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap');
-@import '~primeicons/primeicons.css';
-@import '~primeng/resources/themes/nova-dark/theme.css';
-@import '~primeng/resources/primeng.min.css';
+@import url("https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap");
+@import "~primeicons/primeicons.css";
+@import "~primeng/resources/themes/nova-dark/theme.css";
+@import "~primeng/resources/primeng.min.css";
 
 html {
   scrollbar-face-color: #121212;
@@ -12,39 +12,53 @@ html {
   scrollbar-track-color: #000;
   scrollbar-arrow-color: #000;
   scrollbar-shadow-color: #121212;
-  scrollbar-dark-shadow-color: #121212;
 }
 
-::-webkit-scrollbar { width: 8px; height: 3px;}
-::-webkit-scrollbar-button {  background-color: #121212; }
-::-webkit-scrollbar-track {  background-color: #121212;}
-::-webkit-scrollbar-track-piece { background-color: #000;}
-::-webkit-scrollbar-thumb { height: 50px; background-color: #121212; border-radius: 3px;}
-::-webkit-scrollbar-corner { background-color: #121212;}
-::-webkit-resizer { background-color: #121212;}
+::-webkit-scrollbar {
+  width: 8px;
+  height: 3px;
+}
+::-webkit-scrollbar-button {
+  background-color: #121212;
+}
+::-webkit-scrollbar-track {
+  background-color: #121212;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #000;
+}
+::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #121212;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-corner {
+  background-color: #121212;
+}
+::-webkit-resizer {
+  background-color: #121212;
+}
 
 body {
   background-color: #121212;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  font-family: 'Didact Gothic', sans-serif;
+  font-family: "Didact Gothic", sans-serif;
 }
-
-
 
 body .ui-carousel-items-content .artist-details {
   margin-bottom: 0;
   overflow: hidden;
 }
 
-
 body .ui-carousel-items-content .track-details {
   margin-bottom: 0;
   overflow: hidden;
 }
 
-body .ui-carousel .ui-carousel-content .ui-carousel-prev, body .ui-carousel .ui-carousel-content .ui-carousel-next {
+body .ui-carousel .ui-carousel-content .ui-carousel-prev,
+body .ui-carousel .ui-carousel-content .ui-carousel-next {
   background-color: #ffffff18;
   border: none;
   border-radius: 50%;
@@ -81,7 +95,11 @@ body .ui-button:enabled:hover {
   border: none;
 }
 
-body .ui-carousel .ui-carousel-dots-container .ui-carousel-dot-item.ui-state-highlight .ui-carousel-dot-icon {
+body
+  .ui-carousel
+  .ui-carousel-dots-container
+  .ui-carousel-dot-item.ui-state-highlight
+  .ui-carousel-dot-icon {
   background-color: #1db954;
 }
 
@@ -89,10 +107,9 @@ body .ui-carousel-items-content {
   margin-left: 3%;
 }
 
-::-moz-selection
-{
-    text-shadow: none;
+::-moz-selection {
+  text-shadow: none;
 }
 ::selection {
-    text-shadow: none;
+  text-shadow: none;
 }

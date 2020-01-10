@@ -3,8 +3,8 @@ import { FormControl } from '@angular/forms';
 import { SpotifyService } from '../../services/spotify.service';
 import { ArtistService } from '../../services/artist.service';
 import { TrackService } from '../../services/track.service';
-import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 import { Artist } from 'src/app/typing/artist';
 
 
@@ -31,28 +31,25 @@ export class SearchBarComponent implements OnInit {
     this.radioButton.valueChanges.subscribe(
       (selectedOption) => {
         this.selectedOption = selectedOption;
-        // console.log(this.selectedOption);
         this.results = [];
       }
     );
 
     this.queryField.valueChanges.pipe(filter(term => term), debounceTime(200), distinctUntilChanged())
-    .subscribe(queryField => {
-      if (this.selectedOption === 'artists') {
-        this.spotify.searchArtists(queryField)
-          .subscribe(response => {
-            this.results = response.artists.items;
-            // console.log(this.results)
-          });
-      } else {
-        this.spotify.searchTracks(queryField)
-          .subscribe(response => {
-            this.results = response.tracks.items;
-            // console.log(this.results);
-          });
+      .subscribe(queryField => {
+        if (this.selectedOption === 'artists') {
+          this.spotify.searchArtists(queryField)
+            .subscribe(response => {
+              this.results = response.artists.items;
+            });
+        } else {
+          this.spotify.searchTracks(queryField)
+            .subscribe(response => {
+              this.results = response.tracks.items;
+            });
+        }
       }
-    }
-    );
+      );
   }
 
   onArtistSelect(i: number) {
@@ -68,8 +65,6 @@ export class SearchBarComponent implements OnInit {
   onTrackSelect(i: number) {
     this.selectedTrackIndex = i;
     this.selectedTrack = this.results[i];
-    // console.log(this.selectedTrack);
-    // console.log(this.selectedTrackIndex);
     this.artistService.setSelectedArtist(null);
     this.trackService.setSelectedTrack(this.selectedTrack);
     this.router.navigate(['/overview']);

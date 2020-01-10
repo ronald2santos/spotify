@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
-import {CarouselModule} from 'primeng/carousel';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'primeng/carousel';
 
 
 
@@ -44,7 +44,7 @@ import { CurrentPlaybackComponent } from './components/current-playback/current-
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass:  AppInterceptorService,
+      useClass: AppInterceptorService,
       multi: true
     }
   ],

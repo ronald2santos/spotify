@@ -114,7 +114,7 @@ export class SpotifyService {
 
   changeDevice(deviceID) {
     const url = `/me/player`;
-    const deviceIDs = {device_ids:[deviceID]};
+    const deviceIDs = { device_ids: [deviceID] };
     return this.putQuery(url, deviceIDs);
   }
 

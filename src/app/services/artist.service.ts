@@ -11,13 +11,8 @@ export class ArtistService {
   private selectedArtist = new BehaviorSubject<Artist | undefined>(undefined);
   artistObservable = this.selectedArtist.asObservable();
 
-
-  // getSelectedArtist() {
-  //   return this.selectedArtist;
-  // }
-
   setSelectedArtist(artist: Artist): void {
-     this.selectedArtist.next(artist);
+    this.selectedArtist.next(artist);
   }
 
 }

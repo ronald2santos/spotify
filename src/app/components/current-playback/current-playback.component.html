@@ -1,32 +1,25 @@
-<!-- <div *ngIf="currentTrack" class="player">
-    <img class="track-image" src="{{ currentTrack.album.images[0]?.url }}" alt="" width="70" height="70" />
-    <div>
-    <p class="track-name">
-      {{ currentTrack.name }}
-    </p>
-    <span class="artists-names">{{ currentTrack.artists[0].name }}</span>
-  </div>
-    <span class="duration">
-        {{ currentTrack.duration_ms | date: "mm:ss"}}
-    </span>
-    <div>
-      <p>Currently Playing</p>
-      <span class="tags"> {{device}} </span>
-    </div>
-</div> -->
-
 <div *ngIf="currentTrack" class="music-player">
   <div class="music-player__now-playing">
     <div (click)="onTrackSelect()" class="music-player__song-info">
       <div class="music-player__song-info-cover">
-        <img class="music-player__song-info-cover-img" src="{{currentTrack.album.images[0]?.url}}" alt="">
+        <img
+          class="music-player__song-info-cover-img"
+          src="{{ currentTrack.album.images[0]?.url }}"
+          alt=""
+        />
       </div>
       <div class="music-player__song-info-about">
-        <div  class="music-player__song-info-name">
-        <span class="music-player__song-info-link music-player__song-info-link--song-name">{{currentTrack.name}}</span>
+        <div class="music-player__song-info-name">
+          <span
+            class="music-player__song-info-link music-player__song-info-link--song-name"
+            >{{ currentTrack.name }}</span
+          >
         </div>
         <div class="music-player__song-info-artist">
-          <span class="music-player__song-info-link music-player__song-info-link--artist-name">{{currentTrack.artists[0].name}}</span>
+          <span
+            class="music-player__song-info-link music-player__song-info-link--artist-name"
+            >{{ currentTrack.artists[0].name }}</span
+          >
         </div>
       </div>
     </div>
@@ -35,36 +28,75 @@
   <div class="music-player__controls">
     <div class="music-player__controls-buttons">
       <!-- <button class="music-player__controls-button music-player__controls-button--shuffle control-button"></button> -->
-      <button (click)="playPreviousTrack()" class="music-player__controls-button music-player__controls-button--previous control-button"></button>
-      <button *ngIf="!isPlaying" (click)="playTrack()" class="music-player__controls-button music-player__controls-button--play control-button"></button>
-      <button *ngIf="isPlaying" (click)="pauseTrack()" class="music-player__controls-button music-player__controls-button--pause control-button"></button>
-      <button (click)="playNextTrack()" class="music-player__controls-button music-player__controls-button--next control-button"></button>
+      <button
+        (click)="playPreviousTrack()"
+        class="music-player__controls-button music-player__controls-button--previous control-button"
+      ></button>
+      <button
+        *ngIf="!isPlaying"
+        (click)="playTrack()"
+        class="music-player__controls-button music-player__controls-button--play control-button"
+      ></button>
+      <button
+        *ngIf="isPlaying"
+        (click)="pauseTrack()"
+        class="music-player__controls-button music-player__controls-button--pause control-button"
+      ></button>
+      <button
+        (click)="playNextTrack()"
+        class="music-player__controls-button music-player__controls-button--next control-button"
+      ></button>
       <!-- <button class="music-player__controls-button music-player__controls-button--repeat control-button"></button> -->
     </div>
     <div class="music-player__playback-bar">
-      <div class="music-player__playback-bar-curent-time">{{currentPlaybackPosition | date: "m:ss"}}</div>
-      <div class="music-player__playback-bar-progress-bar" [attr.data-width]="playbackProgress" (mousedown)="startUpdatePlayback(data)" (mouseup)="endUpdatePlayback(data)" (mouseleave)="endUpdatePlayback(data)" (mousemove)="updatePlayback($event,data)" (click)="increasePlayback($event)">
-          <div class="music-player__playback-bar-progress-bar-state" [style.width]="playbackProgress"></div>
-        </div>
+      <div class="music-player__playback-bar-curent-time">
+        {{ currentPlaybackPosition | date: "m:ss" }}
+      </div>
+      <div
+        class="music-player__playback-bar-progress-bar"
+        [attr.data-width]="playbackProgress"
+        (mousedown)="startUpdatePlayback()"
+        (mouseup)="endUpdatePlayback()"
+        (mouseleave)="endUpdatePlayback()"
+        (mousemove)="updatePlayback($event)"
+        (click)="increasePlayback($event)"
+      >
+        <div
+          class="music-player__playback-bar-progress-bar-state"
+          [style.width]="playbackProgress"
+        ></div>
+      </div>
       <!-- <div (click)="handChangeCurrentTrackTime($event)" #progressBar class="music-player__playback-bar-progress-bar">
         <div #progressBarStatus class="music-player__playback-bar-progress-bar-state"></div>
       </div> -->
-      <div class="music-player__playback-bar-time-left">{{currentTrack.duration_ms - currentPlaybackPosition | date: "m:ss"}}</div>
+      <div class="music-player__playback-bar-time-left">
+        {{ currentTrack.duration_ms - currentPlaybackPosition | date: "m:ss" }}
+      </div>
     </div>
   </div>
   <div class="music-player__playback-settings">
-
-
-    <button class="music-player__playback-settings-song-list-button control-button"
+    <button
+      class="music-player__playback-settings-song-list-button control-button"
     ></button>
-    <!-- <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu> -->
-    <button (click)="muteSong()" class="music-player__playback-settings-volume-button control-button"></button>
-        <div class="music-player__playback-settings-volume-progress-bar" [attr.data-width]="volumeProgress" (mousedown)="startUpdateVolume(data)" (mouseup)="endUpdateVolume(data)" (mouseleave)="endUpdateVolume(data)" (mousemove)="updateVolume($event,data)" (click)="increaseVolume($event)">
-                    <span class="volume-text">{{volumeProgress}}</span>
-          <div class="music-player__playback-settings-volume-progress-bar-state" [style.width]="volumeProgress"></div>
-        </div>
+
+    <button
+      (click)="muteSong()"
+      class="music-player__playback-settings-volume-button control-button"
+    ></button>
+    <div
+      class="music-player__playback-settings-volume-progress-bar"
+      [attr.data-width]="volumeProgress"
+      (mousedown)="startUpdateVolume()"
+      (mouseup)="endUpdateVolume()"
+      (mouseleave)="endUpdateVolume()"
+      (mousemove)="updateVolume($event)"
+      (click)="increaseVolume($event)"
+    >
+      <span class="volume-text">{{ volumeProgress }}</span>
+      <div
+        class="music-player__playback-settings-volume-progress-bar-state"
+        [style.width]="volumeProgress"
+      ></div>
+    </div>
   </div>
 </div>

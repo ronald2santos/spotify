@@ -24,7 +24,7 @@ export class AudioFeaturesChartComponent implements OnChanges {
   @Input() selectedTrack;
   @Input() profileTracks;
   @Output() public tempo = new EventEmitter();
-  @Output() public avgTempo = new EventEmitter();
+  @Output() public avgTrackTempo = new EventEmitter();
   @Output() public duration = new EventEmitter();
   @Output() public keyModeData = new EventEmitter();
   @Output() public keyMode = new EventEmitter();
@@ -93,11 +93,6 @@ export class AudioFeaturesChartComponent implements OnChanges {
   public radarChartOptions: RadialChartOptions = {
     responsive: true,
     maintainAspectRatio: true,
-    // layout: {
-    //   padding: {
-    //     bottom: 100
-    //   }
-    // },
     animation: {
       easing: 'easeInQuad',
     },
@@ -172,9 +167,7 @@ export class AudioFeaturesChartComponent implements OnChanges {
     }
 
     if (this.profileTracks) {
-      // console.log(this.profileTracks);
       const tracksIDs = this.profileTracks.map((track) => track.id);
-      // console.log(tracksIDs);
       this.getTracksAudioFeaturesByID(tracksIDs);
     }
   }
@@ -195,7 +188,6 @@ export class AudioFeaturesChartComponent implements OnChanges {
       .subscribe(
         (data) => {
           this.chartData = data;
-          // console.log(this.chartData);
           this.chart.chart.data.datasets.forEach((dataset) => {
             dataset.data = [];
             dataset.data.push(...this.chartData);
@@ -226,7 +218,6 @@ export class AudioFeaturesChartComponent implements OnChanges {
             .subscribe(
               (data) => {
                 this.chartData = data;
-                // console.log(this.chartData);
                 this.chart.chart.data.datasets.forEach((dataset) => {
                   dataset.data = [];
                   dataset.data.push(...this.chartData);
@@ -250,7 +241,6 @@ export class AudioFeaturesChartComponent implements OnChanges {
       .subscribe(
         (data) => {
           this.chartData = data;
-          // console.log(this.chartData);
           this.chart.chart.data.datasets.forEach((dataset) => {
             dataset.data = [];
             dataset.data.push(...this.chartData);
@@ -292,7 +282,7 @@ export class AudioFeaturesChartComponent implements OnChanges {
       return ft.valence;
     }).reduce((a, c) => a + c)) / nTracks).toFixed(3);
 
-    const avgTempo = ((data.audio_features.map((ft) => {
+    const avgTrackTempo = ((data.audio_features.map((ft) => {
       return ft.tempo;
     }).reduce((a, c) => a + c)) / nTracks).toFixed(2);
 
@@ -315,7 +305,7 @@ export class AudioFeaturesChartComponent implements OnChanges {
     const count = {};
     keys.forEach((x) => { count[x.keyMode] = (count[x.keyMode] || 0) + 1; });
 
-    this.avgTempo.emit(avgTempo);
+    this.avgTrackTempo.emit(avgTrackTempo);
     this.duration.emit(avgDuration);
     this.keyModeData.emit(count);
 

@@ -43,7 +43,9 @@ img {
   align-items: center;
 }
 
-.artist-details, .track-details, .artist-data {
+.artist-details,
+.track-details,
+.artist-data {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,7 +66,6 @@ img {
 .track-details:hover {
   cursor: pointer;
 }
-
 
 .logout {
   margin-top: 18px;
@@ -92,308 +93,306 @@ img {
 }
 
 p {
-    color: white;
-  }
-
-  div.all {
-    margin-right: 5%;
-  }
-
-  input {
-    /* clear: both; */
-    display: block;
-    margin: 10px;
-    /* width: 120px;
-    height: 30px; */
-    /* background-color: #108a3aaf; */
-    /* border-radius: 30px; */
-    /* color: RGBA(231, 252, 255, 1); */
-    font-weight: 400;
-    font-size: 0.8em;
-    text-transform: uppercase;
+  color: white;
 }
 
-  div.wrapper {
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    transition: flex-direction 0.5;
-    margin-left: 5%;
-  }
+div.all {
+  margin-right: 5%;
+}
 
-  .chart {
-    width: 60%;
-    margin: 0;
-    margin-top: -20px;
-    padding: 0;
-    margin-right: -10%;
-    margin-left: 0;
-    /* position: absolute;
+input {
+  /* clear: both; */
+  display: block;
+  margin: 10px;
+  /* width: 120px;
+    height: 30px; */
+  /* background-color: #108a3aaf; */
+  /* border-radius: 30px; */
+  /* color: RGBA(231, 252, 255, 1); */
+  font-weight: 400;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+div.wrapper {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  transition: flex-direction 0.5;
+  margin-left: 5%;
+}
+
+.chart {
+  width: 60%;
+  margin: 0;
+  margin-top: -20px;
+  padding: 0;
+  margin-right: -10%;
+  margin-left: 0;
+  /* position: absolute;
     left: 60%; */
-    /* z-index: -1; */
+  /* z-index: -1; */
+}
+
+.profile-image {
+  /* margin-left: 50%; */
+  transition: width 0.5s;
+}
+
+.followers {
+  font-size: 0.65em;
+  color: #949494;
+  font-weight: 600;
+  margin: auto;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  margin-left: 20%;
+  display: flex;
+  align-content: center;
+}
+
+div.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-content: space-between;
+  box-sizing: border-box;
+  width: 60%;
+  margin-left: 20%;
+  margin-right: -10%;
+  /* margin-left: 18%; */
+}
+
+div.info {
+  max-width: 50%;
+  margin-left: 20px;
+  margin-top: 0;
+}
+
+h1 {
+  color: white;
+  margin-top: 0;
+  margin-left: 20%;
+  display: flex;
+  align-content: center;
+  /* text-shadow: #000000 -10px 2px 5px; */
+}
+
+h4 {
+  color: #949494;
+  margin-bottom: 0;
+}
+
+h4:first-of-type {
+  margin-top: 0;
+}
+
+h4.tempo {
+  margin-top: 20px;
+}
+
+div.avg {
+  width: 100%;
+}
+
+.tags {
+  clear: both;
+  font-size: 0.8em;
+  color: #949494;
+  margin: auto;
+  /* position: relative;
+    top: -10px; */
+}
+
+.profile-image {
+  margin-left: 10%;
+  margin-right: -50px;
+  box-shadow: #00000075 -10px 10px 30px;
+}
+
+.disclaimer {
+  width: 100%;
+  font-size: 0.8em;
+  color: #50505080;
+  margin: auto;
+  /* margin-left: 50%; */
+  /* position: relative;
+    top: -10px; */
+}
+
+.center {
+  width: 100%;
+  margin-top: 2vh;
+  margin-left: 5vw;
+  text-align: center;
+}
+
+input[type="radio"] {
+  position: absolute;
+  visibility: hidden;
+  display: none;
+}
+
+label {
+  color: #949494;
+  font-size: 0.8em;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 5px;
+  z-index: -1000;
+}
+
+input[type="radio"]:checked + label {
+  color: lighten(#121212, 60%);
+  background: #9494942d;
+}
+
+label + input[type="radio"] + label {
+  border-left: solid 1px #949494;
+}
+
+.radio-group {
+  border: solid 1px #949494;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.radio-button {
+  text-align: center;
+}
+
+div.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  margin-left: -12%;
+}
+
+@media only screen and (max-width: 1600px) {
+  div.button-wrapper {
+    margin-left: -8%;
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  div.button-wrapper {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 1090px) {
+  .artist-carousel {
+    margin-top: 0;
   }
 
-  .profile-image {
-    /* margin-left: 50%; */
-    transition: width 0.5s;
-  }
-
-  .followers {
-    font-size: 0.65em;
-    color: #949494;
-    font-weight: 600;
-    margin: auto;
-    margin-top: -20px;
-    margin-bottom: 20px;
-    margin-left: 20%;
+  div.wrapper {
     display: flex;
-    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    transition: flex-direction 0.5;
   }
 
-  div.root {
+  div.radio-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    align-content: space-between;
-    box-sizing: border-box;
-    width: 60%;
-    margin-left: 20%;
-    margin-right: -10%;
-    /* margin-left: 18%; */
-  }
-
-  div.info {
-    max-width: 50%;
-    margin-left: 20px;
-    margin-top: 0;
-  }
-
-  h1 {
-    color: white;
-    margin-top: 0;
-    margin-left: 20%;
-    display: flex;
-    align-content: center;
-    /* text-shadow: #000000 -10px 2px 5px; */
-  }
-
-  h4 {
-    color: #949494;
-    margin-bottom: 0;
-  }
-
-  h4:first-of-type {
-    margin-top: 0;
-  }
-
-  h4.tempo {
-    margin-top: 20px;
-  }
-
-  div.avg {
-    width: 100%;
-  }
-
-  .tags {
-    clear: both;
-    font-size: 0.8em;
-    color: #949494;
-    margin: auto;
-    /* position: relative;
-    top: -10px; */
-  }
-
-  .profile-image {
-    margin-left: 10%;
-    margin-right: -50px;
-    box-shadow: #00000075 -10px 10px 30px;
-  }
-
-  .disclaimer {
-    width: 100%;
-    font-size: 0.8em;
-    color: #50505080;
-    margin: auto;
-    /* margin-left: 50%; */
-    /* position: relative;
-    top: -10px; */
-  }
-
-  .center {
-    width: 100%;
-    margin-top: 2vh;
-    margin-left: 5vw;
-    text-align: center;
-  }
-
-  input[type=radio] {
-    position: absolute;
-    visibility: hidden;
-    display: none;
-  }
-
-  label {
-    color: #949494;
-    font-size: 0.8em;
-    display: inline-block;
-    cursor: pointer;
-    font-weight: bold;
-    padding: 5px 5px;
-    z-index: -1000;
-  }
-
-  input[type=radio]:checked + label{
-    color: lighten(#121212,60%);
-    background: #9494942d;
-  }
-
-  label + input[type=radio] + label {
-    border-left: solid 1px #949494;
-  }
-
-  .radio-group {
-    border: solid 1px #949494;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  .radio-button {
-      text-align: center;
   }
 
   div.button-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 10000;
-      margin-left: -12%;
+    margin-left: 10%;
   }
 
-  @media only screen and (max-width: 1600px) {
-    div.button-wrapper {
-      margin-left: -8%;
-    }
+  div.root {
+    margin-left: 0;
   }
 
-  @media only screen and (max-width: 1300px) {
-    div.button-wrapper {
-      margin-left: 0;
-    }
+  .followers .center {
+    margin-left: 50%;
   }
 
-  @media only screen and (max-width: 1090px) {
-    .artist-carousel {
-      margin-top: 0;
-    }
+  div.info {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 5%;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
 
-    div.wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      transition: flex-direction 0.5;
-    }
-
-    div.radio-wrapper {
-        display: flex;
-        flex-direction: row;
-    }
-
-    div.button-wrapper {
-        margin-left: 10%;
-    }
-
-    div.root {
-      margin-left: 0;
-    }
-
-    .followers .center {
-        margin-left: 50%;
-    }
-
-    div.info {
-      width: 100%;
-      max-width: 100%;
-      margin-left: 5%;
-      /* display: flex; */
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-    }
-
-    /* h1 {
+  /* h1 {
         margin-left: 100px;
         margin-right: 0;
     } */
 
-    .profile-image {
-      margin: 0;
-      margin-left: 7.5%;
-    }
-
-    div.chart {
-      /* width: 50%; */
-      margin: 0;
-      padding: 0;
-      margin-left: 20%;
-      margin-top: 2.5%;
-    }
-
-    div.horizontal-chart {
-      margin-left: 0px;
-    }
-
-    div.all {
-      margin-left: -10%;
-      margin-right: 0;
-    }
-
-   div.genres {
-      margin-left: 0px;
-    }
-
+  .profile-image {
+    margin: 0;
+    margin-left: 7.5%;
   }
-  @media only screen and (max-width: 768px) {
-    .carousel-header {
-      font-size: 0.85em;
-    }
 
-    .artist-data {
-      font-size: 0.8em;
-      /* margin-left: 10px; */
-    }
+  div.chart {
+    /* width: 50%; */
+    margin: 0;
+    padding: 0;
+    margin-left: 20%;
+    margin-top: 2.5%;
+  }
 
-    .profile-image {
-      /* margin-top: 17.5%; */
-      margin-left: 10vw;
-      width: 240px;
-      transition: width 0.5s;
-    }
+  div.horizontal-chart {
+    margin-left: 0px;
+  }
+
+  div.all {
+    margin-left: -10%;
+    margin-right: 0;
+  }
+
+  div.genres {
+    margin-left: 0px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .carousel-header {
+    font-size: 0.85em;
+  }
+
+  .artist-data {
+    font-size: 0.8em;
+    /* margin-left: 10px; */
+  }
+
+  .profile-image {
+    /* margin-top: 17.5%; */
+    margin-left: 10vw;
+    width: 240px;
+    transition: width 0.5s;
+  }
 
   div.chart {
     width: 80%;
-     /* padding: 0;
+    /* padding: 0;
     display: flex;
     flex-direction: column; */
     margin-left: 30vw;
   }
 
   div.wrapper {
-      margin-left: -5%;
+    margin-left: -5%;
   }
 
- label {
-      font-size: 0.6em;
+  label {
+    font-size: 0.6em;
   }
 
   h4.tempo {
-     font-size: 0.8em;
+    font-size: 0.8em;
   }
-
-  }
+}

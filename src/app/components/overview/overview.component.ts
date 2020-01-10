@@ -50,7 +50,7 @@ export class OverviewComponent implements OnInit {
   topTracks;
   relatedArtists;
   following: boolean;
-  avgTempo: number;
+  avgTrackTempo: number;
   tempo: number;
   duration: number;
   keyModeData: object;

@@ -8,7 +8,6 @@
       >Popularity: {{ selectedArtist?.popularity }}% |
       {{ selectedArtist?.followers.total | number: "2." }} followers
     </span>
-    <!-- <span *ngIf="following" class="followers">Following: {{ following }} </span> -->
   </div>
   <div class="wrapper">
     <div class="root">
@@ -28,7 +27,7 @@
         <div class="avg">
           <div>
             <h4 class="tempo">Avg Tempo</h4>
-            <span class="tags">{{ avgTempo }} BPM</span>
+            <span class="tags">{{ avgTrackTempo }} BPM</span>
           </div>
           <div>
             <h4 class="tempo">Avg Song Duration</h4>
@@ -42,20 +41,16 @@
     </div>
     <div class="chart artist">
       <app-audio-features-chart
-        (avgTempo)="avgTempo = $event"
+        (avgTrackTempo)="avgTrackTempo = $event"
         (duration)="duration = $event"
         (keyModeData)="keyModeData = $event"
         [selectedArtist]="selectedArtist"
       ></app-audio-features-chart>
     </div>
   </div>
-  <!-- <div class="center">
-    <span *ngIf="selectedArtist" class="disclaimer"
-      >Based on artist's Top 10 Tracks</span
-    >
-  </div> -->
 
-  <div  class="track-carousel">
+
+  <div *ngIf="topTracks.length > 0"  class="track-carousel">
 
     <p-carousel [value]="topTracks" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions" >
       <p-header>
@@ -69,7 +64,6 @@
                   </div>
                   <div class="p-col-12 artist-data">
                       <div class="artist-title">{{track.name}}</div>
-                      <!-- <div class="artist-subtitle">{{track.artists[0].name}}</div> -->
                   </div>
               </div>
           </div>
@@ -92,7 +86,6 @@
                   </div>
                   <div class="p-col-12 artist-data">
                       <div class="artist-title">{{artist.name}}</div>
-                      <!-- <div class="artist-subtitle">{{artist.followers}}</div> -->
                   </div>
               </div>
           </div>
@@ -103,9 +96,9 @@
 
 </div>
 
-<div *ngIf="selectedArtist" style="margin-top: -5%" #targetTrack></div>
+<div *ngIf="selectedArtist" style="margin-top: -5%"></div>
 
-<div  *ngIf="selectedTrack" [@fade]="!selectedArtist" style="margin-bottom: 10%;" class="all">
+<div  #targetTrack *ngIf="selectedTrack" [@fade]="!selectedArtist" style="margin-bottom: 10%;" class="all">
   <div class="title">
   <div class="follow-title">
       <h1>{{ selectedTrack?.name }}</h1>
@@ -116,7 +109,7 @@
   <div class="wrapper">
     <div class="root track">
       <div class="image track">
-        <img class="profile-image" src="{{ selectedTrack.album.images[1].url }}" width="320" />
+        <img class="profile-image" src="{{ selectedTrack.album.images[0].url }}" width="320" />
         <audio id="audio" controls="" preload="auto" name="media" src="{{selectedTrack.preview_url}}"  type="audio/mpeg">
         </audio>
       </div>

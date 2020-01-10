@@ -3,7 +3,7 @@ body {
   height: 100%;
 }
 body {
-  font: 'Didact Gothic';
+  font: "Didact Gothic";
 }
 ul {
   padding-inline-start: 0;
@@ -18,7 +18,7 @@ ul {
 
 .filter-wrapper {
   min-height: 100%;
-  flex-flow: column wrap;;
+  flex-flow: column wrap;
   position: relative;
 }
 
@@ -48,14 +48,14 @@ input {
   box-shadow: #949494;
   color: #ccc;
   padding: 10px;
-  font: 1em 'Didact Gothic';
+  font: 1em "Didact Gothic";
   width: 50%;
   outline: none;
   transition: border 0.5s ease-in-out;
 }
 
 #keyword:focus {
-  border-color : rgb(81, 238, 89);
+  border-color: rgb(81, 238, 89);
 }
 
 #keyword-button {
@@ -64,11 +64,11 @@ input {
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.7em;
-  color: #8DB9ED
+  color: #8db9ed;
 }
 
 #keyword-button:hover {
-  color: #ccc
+  color: #ccc;
 }
 
 .filter-select {
@@ -156,29 +156,26 @@ input {
 }
 
 .filter-select-list:hover {
-  background:  #121212;
-  color: #fff
+  background: #121212;
+  color: #fff;
 }
 
 .list-highlight,
 .list-highlight:hover {
   background: rgb(55, 55, 55);
-  color: #fff
+  color: #fff;
 }
 
 @keyframes fadeIn {
   0% {
-      opacity: 0;
-      /* height: 0%; */
+    opacity: 0;
   }
   100% {
-      opacity: 1;
-      /* height: 100%; */
+    opacity: 1;
   }
 }
 
 @media only screen and (max-width: 768px) {
-
   .filter-select,
   #keyword {
     width: 80%;
@@ -186,7 +183,7 @@ input {
   }
 
   #keyword {
-    font-size: 1em
+    font-size: 1em;
   }
 
   .filter-select {
@@ -196,7 +193,7 @@ input {
   }
 
   #keyword-button {
-    right: 11%
+    right: 11%;
   }
 
   input {
@@ -205,7 +202,6 @@ input {
 }
 
 @media only screen and (max-width: 480px) {
-
   .filter-select,
   #keyword {
     width: 80%;
@@ -221,7 +217,6 @@ input {
   }
 
   #keyword-button {
-    right: 3.5%
+    right: 3.5%;
   }
-
 }

@@ -1,28 +1,28 @@
 div {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    /* position: relative; */
-    text-align: center;
-    /* margin: auto;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* position: relative; */
+  text-align: center;
+  /* margin: auto;
     height: 80vh;
     width: 50vw; */
-    opacity: 1;
-    transition: opacity 0.5s;
-    overflow: visible;
+  opacity: 1;
+  transition: opacity 0.5s;
+  overflow: visible;
 }
 
 canvas {
-    margin: 0;
-    /* padding: -20%; */
-    max-height: 350px;
-    max-width: 700px;
-    overflow: visible;
+  margin: 0;
+  /* padding: -20%; */
+  max-height: 350px;
+  max-width: 700px;
+  overflow: visible;
 }
 
 div.hidden {
-    opacity: 0;
-    z-index: -1000;
+  opacity: 0;
+  z-index: -1000;
 }
 
 span {
@@ -31,18 +31,14 @@ span {
 }
 
 @media only screen and (max-width: 1090px) {
-
-    canvas {
-        margin-left:-10%;
-        /* padding: -20%; */
-        max-height: 350px;
-        max-width: 700px;
-    }
-
-    span {
-      margin-left: -20%;
-    }
-
+  canvas {
+    margin-left: -10%;
+    /* padding: -20%; */
+    max-height: 350px;
+    max-width: 700px;
   }
 
-
+  span {
+    margin-left: -20%;
+  }
+}

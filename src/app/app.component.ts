@@ -29,16 +29,16 @@ export class AppComponent implements OnInit, OnChanges {
   }
 
   checkToken() {
-      if (!this.token || this.token === 'undefined') {
-        const parsed = queryString.parse(window.location.search);
-        const token = parsed.access_token;
-        const refreshToken = parsed.refresh_token;
-        if (token === undefined) {
-            this.router.navigate(['/login']);
-        }
-        window.localStorage.setItem('Token', token);
-        window.localStorage.setItem('refreshToken', refreshToken);
-        this.token = token;
+    if (!this.token || this.token === 'undefined') {
+      const parsed = queryString.parse(window.location.search);
+      const token = parsed.access_token;
+      const refreshToken = parsed.refresh_token;
+      if (token === undefined) {
+        this.router.navigate(['/login']);
       }
+      window.localStorage.setItem('Token', token);
+      window.localStorage.setItem('refreshToken', refreshToken);
+      this.token = token;
     }
   }
+}
