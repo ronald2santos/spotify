@@ -6,6 +6,7 @@ import { Label, BaseChartDirective } from 'ng2-charts';
 import { Artist } from 'src/app/typing/artist';
 import { map } from 'rxjs/operators';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { AudioFeatures } from '../../../typing/audio-features';
 
 @Component({
     selector: 'app-audio-features-chart',
@@ -254,79 +255,29 @@ export class AudioFeaturesChartComponent implements OnChanges {
             });
     }
 
+    getAudioFeatureAverage(data: any, feature: AudioFeatures) {
+        const { audio_features } = data;
+        const nTracks = audio_features.length;
+
+        const totalForFeature = audio_features
+            .map((ft) => {
+                return ft[feature];
+            })
+            .reduce((a, c) => a + c);
+
+        return (totalForFeature / nTracks).toFixed(3);
+    }
+
     calculateChartData(data) {
-        const nTracks = data.audio_features.length;
-
-        const avgAcousticness = (
-            data.audio_features
-                .map((ft) => {
-                    return ft.acousticness;
-                })
-                .reduce((a, c) => a + c) / nTracks
-        ).toFixed(3);
-
-        const avgDanceability = (
-            data.audio_features
-                .map((ft) => {
-                    return ft.danceability;
-                })
-                .reduce((a, c) => a + c) / nTracks
-        ).toFixed(3);
-
-        const avgEnergy = (
-            data.audio_features
-                .map((ft) => {
-                    return ft.energy;
-                })
-                .reduce((a, c) => a + c) / nTracks
-        ).toFixed(3);
-
-        const avgInstrumentalness = (
-            data.audio_features
-                .map((ft) => {
-                    return ft.instrumentalness;
-                })
-                .reduce((a, c) => a + c) / nTracks
-        ).toFixed(3);
-
-        const avgLiveness = (
-            data.audio_features
-                .map((ft) => {
-                    return ft.liveness;
-                })
-                .reduce((a, c) => a + c) / nTracks
-        ).toFixed(3);
-
-        const avgSpeechiness = (
-            data.audio_features
-                .map((ft) => {
-                    return ft.speechiness;
-                })
-                .reduce((a, c) => a + c) / nTracks
-        ).toFixed(3);
-
-        const avgValence = (
-            data.audio_features
-                .map((ft) => {
-                    return ft.valence;
-                })
-                .reduce((a, c) => a + c) / nTracks
-        ).toFixed(3);
-
-        const avgTempo = (
-            data.audio_features
-                .map((ft) => {
-                    return ft.tempo;
-                })
-                .reduce((a, c) => a + c) / nTracks
-        ).toFixed(2);
-
-        const avgDuration =
-            data.audio_features
-                .map((ft) => {
-                    return ft.duration_ms;
-                })
-                .reduce((a, c) => a + c) / nTracks;
+        const avgAcousticness = this.getAudioFeatureAverage(data, AudioFeatures.acousticness);
+        const avgDanceability = this.getAudioFeatureAverage(data, AudioFeatures.danceability);
+        const avgEnergy = this.getAudioFeatureAverage(data, AudioFeatures.energy);
+        const avgInstrumentalness = this.getAudioFeatureAverage(data, AudioFeatures.instrumentalness);
+        const avgLiveness = this.getAudioFeatureAverage(data, AudioFeatures.liveness);
+        const avgSpeechiness = this.getAudioFeatureAverage(data, AudioFeatures.speechiness);
+        const avgValence = this.getAudioFeatureAverage(data, AudioFeatures.valence);
+        const avgTempo = this.getAudioFeatureAverage(data, AudioFeatures.tempo);
+        const avgDuration = this.getAudioFeatureAverage(data, AudioFeatures.duration_ms);
 
         const keys = data.audio_features
             // Mapping key + modes to objects from api data
