@@ -2,12 +2,14 @@
   <div class="title">
     <div class="follow-title">
       <h1>{{ selectedArtist?.name }}</h1>
-      <input class="follow" type="button" value="{{following ? 'Unfollow' : 'Follow'}}" (click)="!following ? follow() : unfollow()"/>
     </div>
-    <span class="followers"
+    <div class="follow-subtitle">
+      <span class="followers"
       >Popularity: {{ selectedArtist?.popularity }}% |
       {{ selectedArtist?.followers.total | number: "2." }} followers
     </span>
+    <input class="follow" type="button" value="{{following ? 'Unfollow' : 'Follow'}}" (click)="!following ? follow() : unfollow()"/>
+    </div>
   </div>
   <div class="wrapper">
     <div class="root">
@@ -50,7 +52,7 @@
   </div>
 
 
-  <div *ngIf="topTracks.length > 0"  class="track-carousel">
+  <div *ngIf="topTracks?.length > 0"  class="track-carousel">
 
     <p-carousel [value]="topTracks" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions" >
       <p-header>
@@ -72,7 +74,7 @@
 
   </div>
 
-  <div *ngIf="relatedArtists.length > 0" class="artist-carousel">
+  <div *ngIf="relatedArtists?.length > 0" class="artist-carousel">
 
     <p-carousel [value]="relatedArtists" [numVisible]="10" [numScroll]="5" [circular]="false"  [responsiveOptions]="responsiveOptions">
       <p-header>
@@ -102,9 +104,11 @@
   <div class="title">
   <div class="follow-title">
       <h1>{{ selectedTrack?.name }}</h1>
-      <input class="follow play" type="button" value="Play song" (click)="playSong()" />
   </div>
+  <div class="follow-subtitle">
     <span class="followers">Popularity: {{ selectedTrack?.popularity }}% </span>
+    <input class="follow play" type="button" value="Play song" (click)="playSong()" />
+  </div>
   </div>
   <div class="wrapper">
     <div class="root track">

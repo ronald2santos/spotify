@@ -1,4 +1,34 @@
 <div *ngIf="currentTrack" class="music-player">
+  <p-overlayPanel
+      [showTransitionOptions]="'0ms'"
+      [hideTransitionOptions]="'0ms'"
+      #op
+      [dismissable]="true"
+      [showCloseIcon]="true"
+    >
+      <div>
+        <div>
+          <h3 tabindex="-1">Connect to a device</h3>
+        </div>
+        <div >
+          <img
+            src="https://open.scdn.co/cdn/images/connect_header@1x.ecc6912d.png"
+            alt=""
+          />
+        </div>
+        <ul class="connect-device-list">
+          <li *ngFor="let device of devices; let i = index">
+            <button (click)=chooseDevice($event)>
+              <div></div>
+              <div class="connect-device-list-item__info">
+                <span dir="auto">Listening On</span>
+                <span dir="auto">{{ device.name }}</span>
+              </div>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </p-overlayPanel>
   <div class="music-player__now-playing">
     <div (click)="onTrackSelect()" class="music-player__song-info">
       <div class="music-player__song-info-cover">
@@ -77,6 +107,9 @@
   <div class="music-player__playback-settings">
     <button
       class="music-player__playback-settings-song-list-button control-button"
+      pButton
+      label="Basic"
+      (click)="showDevices($event, null, op)"
     ></button>
 
     <button

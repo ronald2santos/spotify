@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TrackService } from '../../services/track.service';
 import { ArtistService } from '../../services/artist.service';
 import { SpotifyService } from '../../services/spotify.service';
+import { PlaybackService } from '../../services/playback.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { fadeInAnimation } from '../../router.animation';
+import { Carousel } from 'primeng/carousel';
 
 
 @Component({
@@ -16,7 +18,7 @@ import { fadeInAnimation } from '../../router.animation';
 export class OverviewComponent implements OnInit {
 
   // tslint:disable-next-line: max-line-length
-  constructor(private router: Router, private trackService: TrackService, private artistService: ArtistService, private spotify: SpotifyService, private route: ActivatedRoute) {
+  constructor(private router: Router, private trackService: TrackService, private playbackService: PlaybackService, private artistService: ArtistService, private spotify: SpotifyService, private route: ActivatedRoute) {
     this.responsiveOptions = [
       {
         breakpoint: '1668px',
@@ -37,12 +39,18 @@ export class OverviewComponent implements OnInit {
         breakpoint: '560px',
         numVisible: 3,
         numScroll: 3
+      },
+      {
+        breakpoint: '420px',
+        numVisible: 2,
+        numScroll: 2
       }
     ];
   }
 
   @ViewChild('targetTrack', { static: false }) trackDiv: ElementRef;
   @ViewChild('targetArtist', { static: false }) artistDiv: ElementRef;
+  @ViewChild(Carousel, { static: false }) chart: Carousel;
 
   responsiveOptions;
   selectedArtist;
@@ -59,6 +67,8 @@ export class OverviewComponent implements OnInit {
 
 
   ngOnInit() {
+    Carousel.prototype.onTouchEnd = null;
+    // Carousel.prototype.changePageOnTouch = null;
     this.artistService.artistObservable.subscribe((artist) => {
       this.selectedArtist = artist;
       if (artist) {
@@ -69,20 +79,26 @@ export class OverviewComponent implements OnInit {
   }
 
   onArtistSelect(artist) {
-    this.selectedArtist = artist;
-    this.trackService.setSelectedTrack(null);
-    this.artistService.setSelectedArtist(this.selectedArtist);
-    this.getArtistData(artist.id);
-    this.artistDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    this.router.navigate(['/overview']);
+    if (this.selectedArtist && (artist.id === this.selectedArtist.id)) {
+      this.artistDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      this.selectedArtist = artist;
+      this.trackService.setSelectedTrack(null);
+      this.artistService.setSelectedArtist(this.selectedArtist);
+      this.getArtistData(artist.id);
+      if (this.artistDiv) {
+        this.artistDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      this.router.navigate(['/overview']);
+    }
   }
 
   onTrackSelect(track) {
     this.selectedTrack = track;
-    // this.artistService.setSelectedArtist(null);
-    this.trackDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (this.trackDiv) {
+      this.trackDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     this.trackService.setSelectedTrack(this.selectedTrack);
-    // this.router.navigate(['/overview']);
   }
 
   selectArtistFromTrack(artistID: string) {
@@ -96,13 +112,11 @@ export class OverviewComponent implements OnInit {
   getArtistData(artistID: string) {
     this.spotify.getArtistsTopTracks(artistID).subscribe(
       (topTracks) => {
-        console.log(topTracks);
         this.topTracks = topTracks.tracks;
       }
     );
     this.spotify.getRelatedArtists(artistID).subscribe(
       (relatedArtists) => {
-        console.log(relatedArtists);
         this.relatedArtists = relatedArtists.artists;
       }
     );
@@ -110,10 +124,8 @@ export class OverviewComponent implements OnInit {
   }
 
   checkFollowing(artistID: string) {
-    // console.log('Cheking Follow status');
     this.spotify.checkIfUserFollowsArtists([artistID]).subscribe(
       (following) => {
-        console.log(following[0]);
         this.following = following[0];
       }
     );
@@ -122,7 +134,6 @@ export class OverviewComponent implements OnInit {
   follow() {
     this.spotify.followArtist(this.selectedArtist.id).subscribe(
       (followStatus) => {
-        console.log(followStatus);
         this.checkFollowing(this.selectedArtist.id);
       }
     );
@@ -131,7 +142,6 @@ export class OverviewComponent implements OnInit {
   unfollow() {
     this.spotify.unfollowArtist(this.selectedArtist.id).subscribe(
       (followStatus) => {
-        console.log(followStatus);
         this.checkFollowing(this.selectedArtist.id);
       }
     );
@@ -140,13 +150,12 @@ export class OverviewComponent implements OnInit {
   playSong() {
     this.spotify.getUserAvailableDevices().subscribe(
       (devices) => {
-        console.log(devices);
-        console.log(this.selectedTrack);
         const device = devices.devices.filter((e) => e.name === 'Spotify Analytics');
-        console.log(device[0]);
+        // if (!device) {
+        // }
         this.spotify.playTrackURI(device[0].id, this.selectedTrack.uri).subscribe(
           (playing) => {
-            console.log(playing);
+            this.playbackService.setIsPlaying(true);
           }
         );
       }

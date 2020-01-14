@@ -4,6 +4,7 @@ div.spotify-logo {
   flex-direction: row;
   justify-content: center;
   margin: 45px;
+  /* margin-left: 0; */
 }
 
 .login {

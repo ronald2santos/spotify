@@ -2,11 +2,14 @@
   <div class="title">
     <div class="logout-title">
     <h1>{{ user.display_name }}</h1>
-    <input class="logout" type="button" value="Logout" (click)="logout()"/>
     </div>
-    <span class="followers"
+    <div class="logout-subtitle">
+      <span class="followers"
       >Country: {{ user.country }} | {{ user?.followers.total }} followers
     </span>
+    <input class="logout" type="button" value="Logout" (click)="logout()"/>
+    </div>
+
   </div>
   <div class="wrapper">
     <div class="image">

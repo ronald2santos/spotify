@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { TrackService } from '../../services/track.service';
 import { ArtistService } from '../../services/artist.service';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Carousel } from 'primeng/carousel';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  @ViewChild(Carousel, { static: false }) chart: Carousel;
   selectedArtist;
   selectedTrack;
   timeRangeForm;
@@ -52,11 +54,18 @@ export class ProfileComponent implements OnInit {
         breakpoint: '560px',
         numVisible: 3,
         numScroll: 3
+      },
+      {
+        breakpoint: '420px',
+        numVisible: 2,
+        numScroll: 2
       }
     ];
   }
 
   ngOnInit() {
+    Carousel.prototype.onTouchEnd = null;
+    // Carousel.prototype.changePageOnTouch = null;
     this.timeRangeSelector.valueChanges.subscribe(
       (timeRange) => {
         this.timeRange = timeRange;

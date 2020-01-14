@@ -52,3 +52,9 @@ li h1.active {
   color: white;
   outline : none;
 }
+
+@media only screen and (max-width: 480px) {
+  nav {
+    font-size: 0.9em;
+  }
+}

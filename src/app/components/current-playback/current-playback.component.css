@@ -1,3 +1,4 @@
+
 .music-player {
   font-family: "Didact Gothic";
   position: fixed;
@@ -9,6 +10,8 @@
   align-items: center;
   z-index: 10000000;
 }
+
+
 .music-player__now-playing {
   width: 30%;
   display: flex;
@@ -220,8 +223,9 @@
   background-size: contain;
 }
 
-.music-player__playback-settings-volume-button:hover {
+.music-player__playback-settings-volume-button:hover, .music-player__playback-settings-song-list-button:hover {
   cursor: pointer;
+  left: 8px;
 }
 
 .music-player__playback-settings-volume-progress-bar {
@@ -264,7 +268,7 @@
   background-color: #1db954;
 }
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 600px) {
   .music-player__controls-button--shuffle:after,
   .music-player__controls-button--previous:after,
   .music-player__controls-button--play:after,
@@ -276,13 +280,52 @@
     height: 12px;
   }
 
-  img {
-    width: 20%;
-    height: 20%;
+  .music-player__song-info-cover-img {
+    /* margin: 0; */
+    width: 48px;
+    height: 48px;
   }
 
-  .music-player__song-info-link .music-player__song-info-link--song-name,
-  .music-player__song-info-link .music-player__song-info-link--artist-name {
-    font-size: 0.7em;
+  .music-player__song-info-about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 65px;
+    margin-left: -80px;
+  }
+
+  .music-player__song-info-link--song-name,
+  .music-player__song-info-link--artist-name {
+    font-size: 0.5em;
+    /* margin-top: 15px; */
+    margin-left: 5px;
+  }
+
+  .music-player__song-info-name,
+  .music-player__song-info-artist {
+    margin-top: -10px;
+  }
+
+  .music-player__playback-settings-song-list-button, .music-player__playback-settings-volume-button {
+    visibility: hidden;
+  }
+
+  .music-player__playback-settings-volume-progress-bar {
+    width: 48px;
+  }
+
+  .volume-text {
+    font-size: 0.65em;
+  }
+
+  .music-player__controls {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 370px) {
+  .music-player__controls {
+    width: 50%;
   }
 }

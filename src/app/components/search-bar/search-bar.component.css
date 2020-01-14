@@ -205,8 +205,19 @@ input {
   .filter-select,
   #keyword {
     width: 80%;
+    font-size: 0.8em;
     transition: width 0.5;
   }
+
+  .options {
+    font-size: 0.8em;
+  }
+
+  input[type=radio] {
+    border: 0px;
+    width: 0.8em;
+    height: 0.8em;
+}
 
   input {
     transition: width 0.5;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SpotifyService } from '../../services/spotify.service';
 import { TrackService } from '../../services/track.service';
 import { ArtistService } from '../../services/artist.service';
+import { PlaybackService } from '../../services/playback.service';
 import { Router } from '@angular/router';
 
 declare global {
@@ -15,9 +16,11 @@ declare global {
   styleUrls: ['./current-playback.component.css']
 })
 export class CurrentPlaybackComponent implements OnInit {
-
+  /// State of song reproduction
   isPlaying = false;
-  private nowPlayingSongId: number;
+  /// State of player UI
+  playerIsPaused = true;
+  // private nowPlayingSongId: number;
   volumeProgress = '70%';
   private volumePercentage = 70;
   private updateVolumeToggle = false;
@@ -26,82 +29,57 @@ export class CurrentPlaybackComponent implements OnInit {
   private updatePlaybackToggle = false;
   currentPlaybackPosition: number;
   previousVolume: number;
-
-  // tslint:disable-next-line: max-line-length
-  constructor(private router: Router, private spotify: SpotifyService, private artistService: ArtistService, private trackService: TrackService) { }
-
-
   currentTrack;
+  devices;
   device;
   sdk;
   state;
   timer;
 
-  ngOnInit() {
-    this.loadPlayer();
-  }
+  // tslint:disable-next-line: max-line-length
+  constructor(private router: Router, private spotify: SpotifyService, private artistService: ArtistService, private trackService: TrackService, private playbackService: PlaybackService) { }
 
-  async loadPlayer() {
-    const { Player }: any = await this.waitForSpotifyWebPlaybackSDKToLoad();
-
-    const sdk = new Player({
-      name: 'Spotify Analytics',
-      volume: 0.7,
-      getOAuthToken: callback => { callback(window.localStorage.getItem('Token')); }
+  async ngOnInit() {
+    this.playbackService.playingObservable.subscribe((state) => {
+      this.isPlaying = state;
     });
 
-    this.sdk = sdk;
-
-    const connected = await sdk.connect();
+    this.sdk = await this.playbackService.loadPlayer();
+    const connected = await this.sdk.connect();
 
     if (connected) {
 
-      sdk.addListener('ready', ({ device_id }) => {
+      this.sdk.addListener('ready', ({ device_id }) => {
         this.spotify.getCurrentPlaybackInfo().subscribe(
           (playbackInfo) => {
-            console.log(playbackInfo);
             if (!playbackInfo || !playbackInfo.is_playing) {
-              this.spotify.changeDevice(device_id).subscribe(
-                (response) => {
-                  console.log(response);
-                }
-              );
+              this.spotify.changeDevice(device_id).subscribe();
             } else {
-              // if no playback from other spotify player set platying true when new play song is triggered in app
-              this.isPlaying = true;
+              // if no playback from other spotify player set playing true when new play song is triggered in app
+              this.playbackService.setIsPlaying(true);
               this.startTimer();
             }
           }
         );
       });
 
-      sdk.addListener('player_state_changed', ({
+      this.sdk.addListener('player_state_changed', ({
         track_window: { current_track }
       }) => {
         this.currentTrack = current_track;
-        sdk.getCurrentState().then(state => {
+        this.sdk.getCurrentState().then(state => {
           this.state = state;
           this.currentPlaybackPosition = state.position;
           this.playbackPercentage = (state.position * 100) / this.currentTrack.duration_ms;
+          if (this.isPlaying && this.playerIsPaused) {
+            this.startTimer();
+          }
         });
       });
     }
   }
 
-  async waitForSpotifyWebPlaybackSDKToLoad() {
-    return new Promise(resolve => {
-      if (window.Spotify) {
-        resolve(window.Spotify);
-      } else {
-        window.onSpotifyWebPlaybackSDKReady = () => {
-          resolve(window.Spotify);
-        };
-      }
-    });
-  }
-
   playTrack(): void {
-    console.log(this.state);
     if (this.isPlaying) {
       this.pauseTrack();
       return;
@@ -109,7 +87,8 @@ export class CurrentPlaybackComponent implements OnInit {
 
     setTimeout(() => {
       this.sdk.resume().then(() => {
-        this.isPlaying = true;
+        this.playbackService.setIsPlaying(true);
+        // this.isPlaying = true;
         this.startTimer();
       });
     });
@@ -117,7 +96,8 @@ export class CurrentPlaybackComponent implements OnInit {
 
   pauseTrack(): void {
     this.sdk.pause().then(() => {
-      this.isPlaying = false;
+      // this.isPlaying = false;
+      this.playbackService.setIsPlaying(false);
       this.stopTimer();
     });
   }
@@ -126,10 +106,17 @@ export class CurrentPlaybackComponent implements OnInit {
 
   startTimer() {
     if (this.isPlaying) {
+      this.playerIsPaused = false;
       this.timer = setInterval(() => {
         if (this.playbackPercentage >= 99.5) {
           this.playbackPercentage = 0;
           this.playbackProgress = '0%';
+          if (this.state.track_window.next_tracks.length === 0) {
+            this.stopTimer();
+            this.playbackService.setIsPlaying(false);
+            // this.isPlaying = false;
+
+          }
         }
         this.currentPlaybackPosition = this.currentPlaybackPosition + 1000;
         this.playbackPercentage = this.playbackPercentage + (100000 / (this.currentTrack.duration_ms));
@@ -140,6 +127,7 @@ export class CurrentPlaybackComponent implements OnInit {
 
   stopTimer() {
     clearInterval(this.timer);
+    this.playerIsPaused = true;
   }
 
   ////
@@ -148,7 +136,8 @@ export class CurrentPlaybackComponent implements OnInit {
     if (this.state.track_window.previous_tracks.length > 0) {
       this.stopTimer();
       this.sdk.previousTrack().then(() => {
-        this.isPlaying = true;
+        // this.isPlaying = true;
+        this.playbackService.setIsPlaying(true);
         this.playbackProgress = '0%';
         this.playbackPercentage = 0;
         this.startTimer();
@@ -160,7 +149,8 @@ export class CurrentPlaybackComponent implements OnInit {
     if (this.state.track_window.next_tracks.length > 0) {
       this.stopTimer();
       this.sdk.nextTrack().then(() => {
-        this.isPlaying = true;
+        // this.isPlaying = true;
+        this.playbackService.setIsPlaying(true);
         this.playbackProgress = '0%';
         this.playbackPercentage = 0;
         this.startTimer();
@@ -216,6 +206,7 @@ export class CurrentPlaybackComponent implements OnInit {
 
     this.volumeProgress = this.volumePercentage + '%';
   }
+
 
   startUpdatePlayback() {
     this.updatePlaybackToggle = true;
@@ -283,6 +274,18 @@ export class CurrentPlaybackComponent implements OnInit {
     this.artistService.setSelectedArtist(null);
     this.trackService.setSelectedTrack(this.state.track_window.current_track);
     this.router.navigate(['/overview']);
+  }
+
+  showDevices(event, data, op) {
+    this.spotify.getUserAvailableDevices().subscribe((devices) => {
+      console.log(devices);
+      this.devices = devices.devices;
+    });
+    op.toggle(event);
+  }
+
+  chooseDevice() {
+
   }
 
 }

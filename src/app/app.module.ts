@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselModule } from 'primeng/carousel';
+import {OverlayPanelModule} from 'primeng/overlaypanel';
 
 
 
@@ -39,7 +40,8 @@ import { CurrentPlaybackComponent } from './components/current-playback/current-
     ReactiveFormsModule,
     HttpClientModule,
     ChartsModule,
-    CarouselModule
+    CarouselModule,
+    OverlayPanelModule
   ],
   providers: [
     {

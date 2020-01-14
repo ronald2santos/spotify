@@ -2,6 +2,11 @@ img {
   object-fit: contain;
 }
 
+.title {
+  display: flex;
+  flex-direction: column;
+}
+
 .artist-carousel {
   margin: 5%;
   margin-left: 10%;
@@ -68,7 +73,8 @@ img {
 }
 
 .logout {
-  margin-top: 18px;
+  margin-top: 0px;
+  margin-left: 10px;
   width: 60px;
   height: 15px;
   outline: none;
@@ -79,6 +85,15 @@ img {
   font-weight: 400;
   font-size: 8px;
   cursor: pointer;
+}
+
+.logout-subtitle {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-left: 20%;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 .logout:hover {
@@ -144,12 +159,12 @@ div.wrapper {
   font-size: 0.65em;
   color: #949494;
   font-weight: 600;
-  margin: auto;
+  /* margin: auto;
   margin-top: -20px;
   margin-bottom: 20px;
   margin-left: 20%;
   display: flex;
-  align-content: center;
+  align-content: center; */
 }
 
 div.root {

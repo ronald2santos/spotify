@@ -1,5 +1,8 @@
+.title {
+  display: flex;
+  flex-direction: column;
+}
 .follow {
-  margin-top: 18px;
   margin-left: 10px;
   width: 60px;
   height: 15px;
@@ -30,6 +33,15 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+}
+
+.follow-subtitle {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  margin-left: 20%;
+  margin-top: -20px;
+  margin-bottom: 10px;
 }
 
 img {
@@ -149,12 +161,12 @@ div.wrapper {
   font-size: 0.65em;
   color: #949494;
   font-weight: 600;
-  margin: auto;
+  /* margin: auto;
   margin-top: -20px;
   margin-bottom: 20px;
   margin-left: 20%;
   display: flex;
-  align-content: center;
+  align-content: center; */
 }
 
 div.root {
@@ -429,5 +441,13 @@ div.horizontal-chart {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 370px) {
+  div.follow-title {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+  }
+
+  div.wrapper {
+    font-size: 0.9em;
+  }
 }
