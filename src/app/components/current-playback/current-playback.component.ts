@@ -284,7 +284,17 @@ export class CurrentPlaybackComponent implements OnInit {
     op.toggle(event);
   }
 
-  chooseDevice() {
+  chooseDevice(event, device, op) {
+    this.spotify.changeDevice(device.id).subscribe(
+      () => {
+        this.spotify.getUserAvailableDevices().subscribe((devices) => {
+          console.log(devices);
+          this.devices = devices.devices;
+          op.hide();
+          op.show(event);
+        });
+      }
+    );
 
   }
 

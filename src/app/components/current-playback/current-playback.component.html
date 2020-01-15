@@ -1,30 +1,31 @@
 <div *ngIf="currentTrack" class="music-player">
   <p-overlayPanel
-      [showTransitionOptions]="'0ms'"
-      [hideTransitionOptions]="'0ms'"
+      [showTransitionOptions]="'100ms'"
+      [hideTransitionOptions]="'100ms'"
       #op
       [dismissable]="true"
       [showCloseIcon]="true"
+      [appendTo]="'.music-player'"
     >
       <div>
         <div>
-          <h3 tabindex="-1">Connect to a device</h3>
+          <h3 class="overlay-title" tabindex="-1">Connect to a device</h3>
         </div>
-        <div >
+        <div class="overlay-img">
           <img
             src="https://open.scdn.co/cdn/images/connect_header@1x.ecc6912d.png"
             alt=""
           />
         </div>
         <ul class="connect-device-list">
-          <li *ngFor="let device of devices; let i = index">
-            <button (click)=chooseDevice($event)>
-              <div></div>
+          <li *ngFor="let device of devices; let i = index" (click)="chooseDevice($event, device, op)">
+            <div class="device-button" >
+              <div style="box-sizing: border-box; width: 25%; margin:0" class="spoticon-device-computer-32"></div>
               <div class="connect-device-list-item__info">
-                <span dir="auto">Listening On</span>
-                <span dir="auto">{{ device.name }}</span>
+                <span *ngIf="device.is_active" style="color:#1db954" dir="auto">Listening On: </span>
+                <span dir="auto">  {{ device.name }}</span>
               </div>
-            </button>
+            </div>
           </li>
         </ul>
       </div>
@@ -106,7 +107,7 @@
   </div>
   <div class="music-player__playback-settings">
     <button
-      class="music-player__playback-settings-song-list-button control-button"
+      class="music-player__playback-settings-song-list-button control-button spoticon-devices-16"
       pButton
       label="Basic"
       (click)="showDevices($event, null, op)"
@@ -115,6 +116,12 @@
     <button
       (click)="muteSong()"
       class="music-player__playback-settings-volume-button control-button"
+      [ngClass]="{
+        'spoticon-volume-16':(volumePercentage <= 100) && (volumePercentage >= 65),
+        'spoticon-volume-off-16':volumePercentage === 0,
+        'spoticon-volume-twowave-16': (volumePercentage < 65) && (volumePercentage >= 30),
+        'spoticon-volume-onewave-16': (volumePercentage < 30) && (volumePercentage > 0)
+      }"
     ></button>
     <div
       class="music-player__playback-settings-volume-progress-bar"
