@@ -25,14 +25,14 @@
 }
 
 .follow:hover {
-  color: RGBA(231, 252, 255, 1);
-  background-color: #1db954a1;
+    color: RGBA(231, 252, 255, 1);
+    background-color: #1db954a1;
 }
 
 .follow-title {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 .follow-subtitle {
@@ -45,7 +45,7 @@
 }
 
 img {
-  object-fit: contain;
+    object-fit: contain;
 }
 
 .artist-carousel {
@@ -56,20 +56,20 @@ img {
 }
 
 .track-carousel {
-  margin: 5%;
-  margin-left: 10%;
-  margin-top: -5%;
+    margin: 5%;
+    margin-left: 10%;
+    margin-top: -5%;
 }
 
 .carousel-header {
-  color: #949494;
-  margin-bottom: 0;
-  /* text-align: center; */
+    color: #949494;
+    margin-bottom: 0;
+    /* text-align: center; */
 }
 
 .artist-title {
-  color: #949494;
-  /* text-align: center;
+    color: #949494;
+    /* text-align: center;
   align-self: center; */
   /* margin-left: -5%; */
   margin: auto;
@@ -78,10 +78,10 @@ img {
 }
 
 .artist-subtitle {
-  color: #9494949f;
-  /* text-align: center; */
-  margin: auto;
-  font-size: 0.6em;
+    color: #9494949f;
+    /* text-align: center; */
+    margin: auto;
+    font-size: 0.6em;
 }
 
 .artist-image {
@@ -120,41 +120,41 @@ img {
 }
 
 .artist-details:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .track-details:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 p {
-  color: white;
+    color: white;
 }
 
 div.all {
-  margin-right: 5%;
+    margin-right: 5%;
 }
 
 div.wrapper {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  transition: flex-direction 0.5;
-  margin-bottom: 5%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    transition: flex-direction 0.5;
+    margin-bottom: 5%;
 }
 
 .chart {
-  width: 60%;
-  margin: 0;
-  margin-top: -20px;
-  padding: 0;
-  /* position: absolute;
+    width: 60%;
+    margin: 0;
+    margin-top: -20px;
+    padding: 0;
+    /* position: absolute;
   left: 60%; */
 }
 
 .profile-image {
-  transition: width 0.5s;
+    transition: width 0.5s;
 }
 
 .followers {
@@ -170,68 +170,68 @@ div.wrapper {
 }
 
 div.root {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-content: space-between;
-  box-sizing: border-box;
-  width: 60%;
-  margin-left: 20%;
-  margin-right: -10%;
-  /* margin-left: 18%; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: space-between;
+    box-sizing: border-box;
+    width: 60%;
+    margin-left: 20%;
+    margin-right: -10%;
+    /* margin-left: 18%; */
 }
 
 div.info {
-  max-width: 50%;
-  margin-left: 20px;
-  margin-top: 0;
+    max-width: 50%;
+    margin-left: 20px;
+    margin-top: 0;
 }
 
 h1 {
-  color: white;
-  margin-top: 0;
-  margin-left: 20%;
-  display: flex;
-  align-content: center;
-  /* text-shadow: #000000 -10px 2px 5px; */
+    color: white;
+    margin-top: 0;
+    margin-left: 20%;
+    display: flex;
+    align-content: center;
+    /* text-shadow: #000000 -10px 2px 5px; */
 }
 
 h4 {
-  color: #949494;
-  margin-bottom: 0;
+    color: #949494;
+    margin-bottom: 0;
 }
 
 h4:first-of-type {
-  margin-top: -8px;
+    margin-top: -8px;
 }
 
 h4.tempo {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 div.avg {
-  width: 100%;
+    width: 100%;
 }
 
 .tags {
-  clear: both;
-  font-size: 0.8em;
-  color: #949494;
-  margin: auto;
-  /* position: relative;
+    clear: both;
+    font-size: 0.8em;
+    color: #949494;
+    margin: auto;
+    /* position: relative;
   top: -10px; */
 }
 .image.track {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .profile-image {
-  margin-left: 10%;
-  margin-right: 30px;
-  box-shadow: #00000075 -10px 10px 30px;
+    margin-left: 10%;
+    margin-right: 30px;
+    box-shadow: #00000075 -10px 10px 30px;
 }
 
 audio {
@@ -245,83 +245,83 @@ audio {
 }
 
 .disclaimer {
-  width: 100%;
-  font-size: 0.8em;
-  color: #50505080;
-  margin: auto;
-  /* margin-left: 50%; */
-  /* position: relative;
+    width: 100%;
+    font-size: 0.8em;
+    color: #50505080;
+    margin: auto;
+    /* margin-left: 50%; */
+    /* position: relative;
   top: -10px; */
 }
 
 div.center {
-  width: 100%;
-  margin-top: 2vh;
-  margin-left: 5vw;
-  text-align: center;
+    width: 100%;
+    margin-top: 2vh;
+    margin-left: 5vw;
+    text-align: center;
 }
 
 div.horizontal-chart {
-  box-sizing: border-box;
-  width: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@media only screen and (max-width: 1090px) {
-  div.wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    transition: flex-direction 0.5;
-  }
+}
 
-  div.root {
-    margin-left: 0;
-  }
+@media only screen and (max-width: 1090px) {
+    div.wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        transition: flex-direction 0.5;
+    }
 
-  div.info {
-    width: 100%;
-    max-width: 100%;
-    margin-left: 5%;
-    /* display: flex; */
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-  }
+    div.root {
+        margin-left: 0;
+    }
 
-  /* h1 {
+    div.info {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 5%;
+        /* display: flex; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    /* h1 {
       margin-left: 100px;
       margin-right: 0;
   } */
 
-  div.image {
-    margin: 0;
-  }
+    div.image {
+        margin: 0;
+    }
 
-  div.chart {
-    /* width: 50%; */
-    margin: 0;
-    padding: 0;
-    margin-left: 20%;
-    margin-top: 2.5%;
-  }
+    div.chart {
+        /* width: 50%; */
+        margin: 0;
+        padding: 0;
+        margin-left: 20%;
+        margin-top: 2.5%;
+    }
 
-  div.horizontal-chart {
-    margin-left: 0px;
-  }
+    div.horizontal-chart {
+        margin-left: 0px;
+    }
 
-  div.all {
-    margin-left: -10%;
-    margin-right: 0;
-  }
+    div.all {
+        margin-left: -10%;
+        margin-right: 0;
+    }
 
-  div.genres {
-    margin-left: 0px;
-  }
+    div.genres {
+        margin-left: 0px;
+    }
 }
 @media only screen and (max-width: 768px) {
   div.title {
@@ -351,7 +351,7 @@ div.horizontal-chart {
     justify-content: center;
   } */
 
-  /* div.avg.track {
+    /* div.avg.track {
     width: 100%;
     display: flex;
     flex-direction: row;

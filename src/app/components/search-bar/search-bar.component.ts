@@ -7,27 +7,29 @@ import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Artist } from 'src/app/typing/artist';
 
-
 @Component({
-  selector: 'app-search-bar',
-  templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css']
+    selector: 'app-search-bar',
+    templateUrl: './search-bar.component.html',
+    styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent implements OnInit {
+    // tslint:disable-next-line: max-line-length
+    constructor(
+        private trackService: TrackService,
+        private spotify: SpotifyService,
+        private artistService: ArtistService,
+        private router: Router
+    ) {}
+    radioButton: FormControl = new FormControl('artists');
+    queryField: FormControl = new FormControl();
+    results: any[] = [];
+    selectedOption = 'artists';
+    selectedArtistIndex: number;
+    selectedArtist: Artist;
+    selectedTrackIndex: number;
+    selectedTrack;
 
-  // tslint:disable-next-line: max-line-length
-  constructor(private trackService: TrackService, private spotify: SpotifyService, private artistService: ArtistService, private router: Router) { }
-  radioButton: FormControl = new FormControl('artists');
-  queryField: FormControl = new FormControl();
-  results: any[] = [];
-  selectedOption = 'artists';
-  selectedArtistIndex: number;
-  selectedArtist: Artist;
-  selectedTrackIndex: number;
-  selectedTrack;
-
-  ngOnInit() {
-
+    ngOnInit() {
     this.radioButton.valueChanges.subscribe(
       (selectedOption) => {
         this.selectedOption = selectedOption;

@@ -3,7 +3,7 @@ import { Artist } from '../typing/artist';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class ArtistService {
 
@@ -11,8 +11,7 @@ export class ArtistService {
   private selectedArtist = new BehaviorSubject<Artist | undefined>(undefined);
   artistObservable = this.selectedArtist.asObservable();
 
-  setSelectedArtist(artist: Artist): void {
-    this.selectedArtist.next(artist);
-  }
-
+    setSelectedArtist(artist: Artist): void {
+        this.selectedArtist.next(artist);
+    }
 }

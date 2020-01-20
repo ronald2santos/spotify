@@ -1,8 +1,8 @@
 <ul *ngIf="topTracks.length > 0">
-  <div>
-    <li *ngFor="let track of topTracks">
-      <img src="{{track.album.images[1].url}}" width="128">
-      <h4>{{track.name}}</h4>
-    </li>
-  </div>
+    <div>
+        <li *ngFor="let track of topTracks">
+            <img src="{{ track.album.images[1].url }}" width="128" />
+            <h4>{{ track.name }}</h4>
+        </li>
+    </div>
 </ul>

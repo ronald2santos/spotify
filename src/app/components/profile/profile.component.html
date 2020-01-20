@@ -91,50 +91,45 @@
     </div>
   </div>
 
-<div class="artist-carousel">
-
-  <p-carousel [value]="artists" [numVisible]="10" [numScroll]="5" [circular]="false"  [responsiveOptions]="responsiveOptions">
-    <p-header>
-        <h3 class="carousel-header">Top Artists</h3>
-    </p-header>
-    <ng-template let-artist pTemplate="item">
-        <div class="artist-details" (click)="onArtistSelect(artist)">
-            <div class="p-grid p-nogutter">
-                <div class="p-col-12 artist-image">
-                    <img src="{{ artist.images[0]?.url }}" height="120" width="120" />
+    <div class="artist-carousel">
+        <p-carousel [value]="artists" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <p-header>
+                <h3 class="carousel-header">Top Artists</h3>
+            </p-header>
+            <ng-template let-artist pTemplate="item">
+                <div class="artist-details" (click)="onArtistSelect(artist)">
+                    <div class="p-grid p-nogutter">
+                        <div class="p-col-12 artist-image">
+                            <img src="{{ artist.images[0]?.url }}" height="120" width="120" />
+                        </div>
+                        <div class="p-col-12 artist-data">
+                            <div class="artist-title">{{ artist.name }}</div>
+                            <!-- <div class="artist-subtitle">{{artist.followers}}</div> -->
+                        </div>
+                    </div>
                 </div>
-                <div class="p-col-12 artist-data">
-                    <div class="artist-title">{{artist.name}}</div>
+            </ng-template>
+        </p-carousel>
+    </div>
+
+    <div class="track-carousel">
+        <p-carousel [value]="tracks" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions">
+            <p-header>
+                <h3 class="carousel-header">Top Tracks</h3>
+            </p-header>
+            <ng-template let-track pTemplate="item">
+                <div class="track-details" (click)="onTrackSelect(track)">
+                    <div class="p-grid p-nogutter">
+                        <div class="p-col-12 artist-image">
+                            <img src="{{ track.album.images[0]?.url }}" height="120" width="120" />
+                        </div>
+                        <div class="p-col-12 artist-data">
+                            <div class="artist-title">{{ track.name }}</div>
+                            <div class="artist-subtitle">{{ track.artists[0].name }}</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </ng-template>
-</p-carousel>
-
-</div>
-
-<div class="track-carousel">
-
-  <p-carousel [value]="tracks" [numVisible]="10" [numScroll]="5" [circular]="false" [responsiveOptions]="responsiveOptions" >
-    <p-header>
-        <h3 class="carousel-header">Top Tracks</h3>
-    </p-header>
-    <ng-template let-track pTemplate="item">
-        <div class="track-details" (click)="onTrackSelect(track)">
-            <div class="p-grid p-nogutter">
-                <div class="p-col-12 artist-image">
-                    <img src="{{ track.album.images[0]?.url }}" height="120" width="120" />
-                </div>
-                <div class="p-col-12 artist-data">
-                    <div class="artist-title">{{track.name}}</div>
-                    <div class="artist-subtitle">{{track.artists[0].name}}</div>
-                </div>
-            </div>
-        </div>
-    </ng-template>
-</p-carousel>
-
-</div>
-
-
+            </ng-template>
+        </p-carousel>
+    </div>
 </div>

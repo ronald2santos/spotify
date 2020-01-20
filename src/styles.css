@@ -52,13 +52,13 @@ body {
 }
 
 body .ui-carousel-items-content .artist-details {
-  margin-bottom: 0;
-  overflow: hidden;
+    margin-bottom: 0;
+    overflow: hidden;
 }
 
 body .ui-carousel-items-content .track-details {
-  margin-bottom: 0;
-  overflow: hidden;
+    margin-bottom: 0;
+    overflow: hidden;
 }
 
 body .ui-carousel .ui-carousel-content .ui-carousel-prev,
@@ -74,29 +74,29 @@ body .ui-carousel .ui-carousel-content .ui-carousel-next {
 }
 
 body .ui-button {
-  margin: 0;
-  color: #ffffff48;
-  background-color: #1db954;
-  border: 1px solid #1db954;
-  font-size: 0.8em;
-  transition: background-color 0.2s, box-shadow 0.2s;
+    margin: 0;
+    color: #ffffff48;
+    background-color: #1db954;
+    border: 1px solid #1db954;
+    font-size: 0.8em;
+    transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 body .ui-button span {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 body .ui-button:enabled:focus {
-  background-color: #ffffff1f;
-  border: none;
-  /* border: 1px solid #1db954; */
-  box-shadow: none;
+    background-color: #ffffff1f;
+    border: none;
+    /* border: 1px solid #1db954; */
+    box-shadow: none;
 }
 
 body .ui-button:enabled:hover {
-  background-color: #1db954;
-  color: #ffffff21;
-  border: none;
+    background-color: #1db954;
+    color: #ffffff21;
+    border: none;
 }
 
 body
@@ -148,10 +148,6 @@ body .ui-overlaypanel .ui-overlaypanel-close {
 body .ui-overlaypanel .ui-overlaypanel-close:hover {
   background-color: #1db954ca;
 }
-
-
-
-
 
 /* Spotify icons css */
 

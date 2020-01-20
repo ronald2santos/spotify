@@ -26,8 +26,8 @@ div.hidden {
 }
 
 span {
-  font-size: 0.65em;
-  color: rgba(88, 88, 88, 0.438);
+    font-size: 0.65em;
+    color: rgba(88, 88, 88, 0.438);
 }
 
 @media only screen and (max-width: 1090px) {

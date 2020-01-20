@@ -1,5 +1,5 @@
 img {
-  object-fit: contain;
+    object-fit: contain;
 }
 
 .title {
@@ -8,8 +8,8 @@ img {
 }
 
 .artist-carousel {
-  margin: 5%;
-  margin-left: 10%;
+    margin: 5%;
+    margin-left: 10%;
 }
 
 .track-carousel {
@@ -20,14 +20,14 @@ img {
 }
 
 .carousel-header {
-  color: #949494;
-  margin-bottom: 0;
-  /* text-align: center; */
+    color: #949494;
+    margin-bottom: 0;
+    /* text-align: center; */
 }
 
 .artist-title {
-  color: #949494;
-  /* text-align: center;
+    color: #949494;
+    /* text-align: center;
   align-self: center; */
   /* margin-left: -5%; */
   margin: auto;
@@ -36,10 +36,10 @@ img {
 }
 
 .artist-subtitle {
-  color: #9494949f;
-  /* text-align: center; */
-  margin: auto;
-  font-size: 0.6em;
+    color: #9494949f;
+    /* text-align: center; */
+    margin: auto;
+    font-size: 0.6em;
 }
 
 .artist-image {
@@ -65,11 +65,11 @@ img {
 }
 
 .artist-details:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .track-details:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .logout {
@@ -97,14 +97,14 @@ img {
 }
 
 .logout:hover {
-  color: RGBA(231, 252, 255, 1);
-  background-color: #1db954a1;
+    color: RGBA(231, 252, 255, 1);
+    background-color: #1db954a1;
 }
 
 .logout-title {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
 }
 
 p {

@@ -3,30 +3,27 @@ import { Router } from '@angular/router';
 import queryString from 'query-string';
 import { slideInAnimation, fadeInAnimation } from './router.animation';
 
-
-
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  animations: [slideInAnimation, fadeInAnimation]
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css'],
+    animations: [slideInAnimation, fadeInAnimation],
 })
 export class AppComponent implements OnInit, OnChanges {
-  title = 'spotify-analytics';
-  token: string = window.localStorage.getItem('Token');
-  refreshToken: string = window.localStorage.getItem('refreshToken');
+    title = 'spotify-analytics';
+    token: string = window.localStorage.getItem('Token');
+    refreshToken: string = window.localStorage.getItem('refreshToken');
 
+    constructor(private router: Router) {}
 
-  constructor(private router: Router) { }
+    ngOnInit(): void {
+        console.log(this.token);
+        this.checkToken();
+    }
 
-  ngOnInit(): void {
-    console.log(this.token);
-    this.checkToken();
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.checkToken();
-  }
+    ngOnChanges(changes: SimpleChanges): void {
+        this.checkToken();
+    }
 
   checkToken() {
     if (!this.token || this.token === 'undefined') {

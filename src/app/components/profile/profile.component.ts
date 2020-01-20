@@ -7,9 +7,9 @@ import { Router } from '@angular/router';
 import { Carousel } from 'primeng/carousel';
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
   @ViewChild(Carousel, { static: false }) chart: Carousel;
@@ -74,18 +74,16 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.trackLimitSelector.valueChanges.subscribe(
-      (trackLimit) => {
-        this.trackLimit = trackLimit;
-        this.getUserTopTracks();
-        this.getUserTopArtists();
-      }
-    );
+        this.trackLimitSelector.valueChanges.subscribe((trackLimit) => {
+            this.trackLimit = trackLimit;
+            this.getUserTopTracks();
+            this.getUserTopArtists();
+        });
 
-    this.getUserProfile();
-    this.getUserTopArtists();
-    this.getUserTopTracks();
-  }
+        this.getUserProfile();
+        this.getUserTopArtists();
+        this.getUserTopTracks();
+    }
 
   getUserProfile() {
     this.spotify.getCurrentUserProfile().subscribe(
@@ -95,37 +93,33 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  getUserTopArtists() {
-    this.spotify.getUserTopArtists(this.trackLimit, this.timeRange).subscribe(
-      (artists) => {
-        console.log(artists);
-        this.artists = artists.items;
-      }
-    );
-  }
+    getUserTopArtists() {
+        this.spotify.getUserTopArtists(this.trackLimit, this.timeRange).subscribe((artists) => {
+            console.log(artists);
+            this.artists = artists.items;
+        });
+    }
 
-  getUserTopTracks() {
-    this.spotify.getUserTopTracks(this.trackLimit, this.timeRange).subscribe(
-      (tracks) => {
-        console.log(tracks);
-        this.tracks = tracks.items;
-      }
-    );
-  }
+    getUserTopTracks() {
+        this.spotify.getUserTopTracks(this.trackLimit, this.timeRange).subscribe((tracks) => {
+            console.log(tracks);
+            this.tracks = tracks.items;
+        });
+    }
 
-  onArtistSelect(artist) {
-    this.selectedArtist = artist;
-    this.trackService.setSelectedTrack(null);
-    this.artistService.setSelectedArtist(this.selectedArtist);
-    this.router.navigate(['/overview']);
-  }
+    onArtistSelect(artist) {
+        this.selectedArtist = artist;
+        this.trackService.setSelectedTrack(null);
+        this.artistService.setSelectedArtist(this.selectedArtist);
+        this.router.navigate(['/overview']);
+    }
 
-  onTrackSelect(track) {
-    this.selectedTrack = track;
-    this.artistService.setSelectedArtist(null);
-    this.trackService.setSelectedTrack(this.selectedTrack);
-    this.router.navigate(['/overview']);
-  }
+    onTrackSelect(track) {
+        this.selectedTrack = track;
+        this.artistService.setSelectedArtist(null);
+        this.trackService.setSelectedTrack(this.selectedTrack);
+        this.router.navigate(['/overview']);
+    }
 
   logout() {
     window.localStorage.clear();

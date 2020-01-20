@@ -7,12 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { fadeInAnimation } from '../../router.animation';
 import { Carousel } from 'primeng/carousel';
 
-
 @Component({
-  selector: 'app-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.css'],
-  animations: [fadeInAnimation]
+    selector: 'app-overview',
+    templateUrl: './overview.component.html',
+    styleUrls: ['./overview.component.css'],
+    animations: [fadeInAnimation],
 })
 
 export class OverviewComponent implements OnInit {

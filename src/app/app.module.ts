@@ -20,7 +20,6 @@ import { AppInterceptorService } from './services/app-interceptor.service';
 import { LoginComponent } from './components/login/login.component';
 import { CurrentPlaybackComponent } from './components/current-playback/current-playback.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,4 +51,4 @@ import { CurrentPlaybackComponent } from './components/current-playback/current-
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

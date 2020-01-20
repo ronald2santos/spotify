@@ -5,11 +5,9 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-
 export class AppInterceptorService implements HttpInterceptor {
-
   constructor(private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

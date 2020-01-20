@@ -16,8 +16,6 @@
 }
 
 .login:hover {
-  background-color: #1db954;
-  color: RGBA(231, 252, 255, 1);
+    background-color: #1db954;
+    color: RGBA(231, 252, 255, 1);
 }
-
-

@@ -1,14 +1,14 @@
 <section class="filter-wrapper">
-  <div class="options">
-    <div class="radio-button">
-        <label>Search Artists</label>
-        <input [formControl]="radioButton" type="radio" value="artists">
+    <div class="options">
+        <div class="radio-button">
+            <label>Search Artists</label>
+            <input [formControl]="radioButton" type="radio" value="artists" />
+        </div>
+        <div class="radio-button">
+            <label>Search Tracks</label>
+            <input [formControl]="radioButton" type="radio" value="tracks" />
+        </div>
     </div>
-    <div class="radio-button">
-        <label>Search Tracks</label>
-        <input [formControl]="radioButton" type="radio" value="tracks">
-    </div>
-  </div>
   <div class="keyword-wrapper">
     <input
       [formControl]="queryField"
