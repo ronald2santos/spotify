@@ -142,7 +142,7 @@
                 >Track {{ selectedTrack.track_number }}</span
               >
             </div>
-            <div>
+            <div *ngIf="selectedTrack.album.release_date">
               <span class="tags">
                 Released on: {{ selectedTrack.album.release_date }}</span
               >

@@ -72,11 +72,7 @@ app.get('/refresh', function(req, res) {
     const refreshToken = body.refresh_token;
     // process.env.access_token = accessToken
     // process.env.refresh_token = refreshToken
-<<<<<<< HEAD
     let uri = process.env.FRONTEND_URI || 'http://localhost:4200/profile'
-=======
-    const uri = process.env.FRONTEND_URI || 'http://localhost:4200';
->>>>>>> 9b073b58255fd65eb1b491b232e5acc8950639da
     res.redirect(uri + '?access_token=' + accessToken + '&refresh_token=' + refreshToken)
   })
 });
@@ -84,14 +80,14 @@ app.get('/refresh', function(req, res) {
 // Run the app by serving the static files
 // in the dist directory
 
-// app.use(express.static(__dirname + '/dist/spotify-analytics'));
+app.use(express.static(__dirname + '/dist/spotify-analytics'));
 
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
 
-// app.get('/*', function(req, res) {
-//   res.sendFile(path.join(__dirname + '/dist/spotify-analytics/index.html'));
-// });
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/spotify-analytics/index.html'));
+});
 
 const port = process.env.PORT || 8888;
 console.log(`Listening on port ${port}. Go /login to initiate authentication flow.`);
