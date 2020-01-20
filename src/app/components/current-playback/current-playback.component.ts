@@ -22,11 +22,11 @@ export class CurrentPlaybackComponent implements OnInit {
   playerIsPaused = true;
   // private nowPlayingSongId: number;
   volumeProgress = '70%';
-  private volumePercentage = 70;
-  private updateVolumeToggle = false;
+  volumePercentage = 70;
+  updateVolumeToggle = false;
   playbackProgress = '0%';
-  private playbackPercentage = 0;
-  private updatePlaybackToggle = false;
+  playbackPercentage = 0;
+ updatePlaybackToggle = false;
   currentPlaybackPosition: number;
   previousVolume: number;
   currentTrack;
