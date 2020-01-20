@@ -5,7 +5,7 @@ div {
     position: relative;
     opacity: 1;
     transition: opacity 0.5s;
-    z-index: 1000;
+    z-index: 998;
 }
 
 canvas {

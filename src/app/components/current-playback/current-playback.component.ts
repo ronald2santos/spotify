@@ -71,6 +71,7 @@ export class CurrentPlaybackComponent implements OnInit {
           this.state = state;
           this.currentPlaybackPosition = state.position;
           this.playbackPercentage = (state.position * 100) / this.currentTrack.duration_ms;
+
           if (this.isPlaying && this.playerIsPaused) {
             this.startTimer();
           }
@@ -292,6 +293,13 @@ export class CurrentPlaybackComponent implements OnInit {
           this.devices = devices.devices;
           op.hide();
           op.show(event);
+          console.log(this.playerIsPaused)
+          console.log(this.isPlaying)
+          if(this.isPlaying && this.playerIsPaused) {
+            this.startTimer();
+          } else {
+            this.stopTimer();
+          }
         });
       }
     );

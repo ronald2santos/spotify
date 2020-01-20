@@ -72,7 +72,7 @@ app.get('/refresh', function(req, res) {
     const refreshToken = body.refresh_token
     // process.env.access_token = accessToken
     // process.env.refresh_token = refreshToken
-    let uri = process.env.FRONTEND_URI || 'http://localhost:4200'
+    let uri = process.env.FRONTEND_URI || 'http://localhost:4200/profile'
     res.redirect(uri + '?access_token=' + accessToken + '&refresh_token=' + refreshToken)
   })
 })
