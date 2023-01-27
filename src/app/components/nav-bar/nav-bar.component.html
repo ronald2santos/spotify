@@ -6,7 +6,7 @@
                 <a routerLinkActive="active"></a>
             </h1>
         </li>
-        <li>
+        <li *ngIf="!overviewHidden">
             <h1 routerLink="/overview" routerLinkActive="active" (click)="onClick($event)">
                 Overview
                 <a routerLinkActive="active"></a>

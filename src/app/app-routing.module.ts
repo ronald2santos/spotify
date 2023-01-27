@@ -10,7 +10,7 @@ const routes: Routes = [
     { path: 'profile', component: ProfileComponent, data: { animation: 'Profile' } },
     { path: 'overview', component: OverviewComponent, data: { animation: 'Overview' } },
     { path: 'topTracks', component: TopTracksComponent },
-    // { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '', redirectTo: '/profile', pathMatch: 'full' },
 ];
 
 @NgModule({

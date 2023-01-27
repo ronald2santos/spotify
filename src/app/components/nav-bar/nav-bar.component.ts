@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArtistService } from '../../services/artist.service';
+
 
 @Component({
     selector: 'app-nav-bar',
@@ -6,25 +8,25 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-    constructor() {}
+    constructor(private artistService: ArtistService, ) {}
     activeOverview = false;
-    activeTopTracks = false;
     activeProfile = false;
+    overviewHidden = true;
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.artistService.artistObservable.subscribe((artist) => {
+            if (artist) {
+              this.overviewHidden = false
+            }
+          });
+    }
 
     onClick(event) {
         if (event.target.innerText === 'Overview') {
             this.activeOverview = true;
-            this.activeTopTracks = false;
-            this.activeProfile = false;
-        } else if (event.target.innerText === 'Top Tracks') {
-            this.activeOverview = false;
-            this.activeTopTracks = true;
             this.activeProfile = false;
         } else {
             this.activeOverview = false;
-            this.activeTopTracks = false;
             this.activeProfile = true;
         }
     }

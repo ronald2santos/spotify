@@ -142,8 +142,7 @@ input {
 .filter-select-list {
     opacity: 0;
     cursor: pointer;
-    padding: 5px 10px;
-    margin-top: 10px;
+    padding: 10px;
     animation: fadeIn 0.3s ease-in-out forwards;
 }
 

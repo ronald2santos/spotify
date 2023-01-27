@@ -11,8 +11,10 @@ export class AppInterceptorService implements HttpInterceptor {
   constructor(private router: Router) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    console.log(req)
     return next.handle(req)
       .pipe(
+       
         catchError(
           (error: HttpErrorResponse) => {
             console.log(error);
