@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {}
 
     login() {
-        window.location.href = 'https://spotify-stats-angular.herokuapp.com/login';
-        // window.location.href = "http://localhost:8888/login";
+        window.location.href = 'https://spotify-analytics.netlify.app/auth'
+        // window.location.href = "http://localhost:8888/auth";
     }
 }

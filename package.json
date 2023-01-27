@@ -3,12 +3,13 @@
     "version": "0.0.0",
     "scripts": {
         "ng": "ng",
-        "build": "ng build",
+        "build": "ng build --prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
         "postinstall": "ng build --aot --prod",
-        "start": "node auth.js",
+        "start": "node server/auth.js",
+        "netlify":"ng serve --open | node server/auth.js",
         "prettier": "node_modules/.bin/prettier --config ./.prettierrc.json --write './**/*.{ts,json,html,css,md}'"
     },
     "private": true,
@@ -37,6 +38,7 @@
         "querystring": "^0.2.0",
         "request": "^2.88.0",
         "rxjs": "~6.4.0",
+        "serverless-http": "^3.1.1",
         "tslib": "^1.10.0",
         "zone.js": "~0.9.1"
     },

@@ -17,11 +17,10 @@ export class AppComponent implements OnInit, OnChanges {
     constructor(private router: Router) {}
 
     ngOnInit(): void {
-        console.log(this.token);
         this.checkToken();
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
+    ngOnChanges(): void {
         this.checkToken();
     }
 

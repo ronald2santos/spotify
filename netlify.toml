@@ -1,0 +1,14 @@
+[build]
+    functions="server"
+    publish = "dist/spotify-analytics"
+    command = "CI= npm run build"
+
+[dev]
+    targetPort = 4200
+    functions="server"
+    command="npm run netlify"
+
+[[redirects]]
+    to="/.netlify/functions/auth/:splat"
+    from="/*"
+    status=200

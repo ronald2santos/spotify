@@ -2,3 +2,6 @@
 .env
 /dist
 .idea
+
+# Local Netlify folder
+.netlify

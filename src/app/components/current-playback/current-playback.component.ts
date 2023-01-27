@@ -279,8 +279,8 @@ export class CurrentPlaybackComponent implements OnInit {
 
   showDevices(event, data, op) {
     this.spotify.getUserAvailableDevices().subscribe((devices) => {
-      console.log(devices);
-      this.devices = devices.devices;
+      /// Bug: Spotify adding same device duplicates, hotfix
+      this.devices = devices.devices.filter(device => device.name == "Spotify Analytics" && device.is_active == true);
     });
     op.toggle(event);
   }
@@ -289,12 +289,9 @@ export class CurrentPlaybackComponent implements OnInit {
     this.spotify.changeDevice(device.id).subscribe(
       () => {
         this.spotify.getUserAvailableDevices().subscribe((devices) => {
-          console.log(devices);
           this.devices = devices.devices;
           op.hide();
           op.show(event);
-          console.log(this.playerIsPaused)
-          console.log(this.isPlaying)
           if(this.isPlaying && this.playerIsPaused) {
             this.startTimer();
           } else {

@@ -1,17 +1,19 @@
-console.log(require('dotenv').config({debug: true}))
-
+require('dotenv')
 const express = require('express');
 const request = require('request');
 const path = require('path');
 const querystring = require('querystring');
+const serverless = require('serverless-http')
 
 const app = express();
+const router = express.Router()
+const port = process.env.PORT || 8000;
 
 const redirect_uri =
   process.env.REDIRECT_URI ||
-  'http://localhost:8888/callback';
+  `http://localhost:${port}/callback`;
 
-app.get('/login', function(req, res) {
+router.get('/auth', function(req, res) {
   res.redirect(`https://accounts.spotify.com/authorize?${
     querystring.stringify({
       response_type: 'code',
@@ -22,7 +24,7 @@ app.get('/login', function(req, res) {
     })}`);
 });
 
-app.get('/callback', function(req, res) {
+router.get('/callback', function(req, res) {
   const code = req.query.code || null;
   const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -49,7 +51,7 @@ app.get('/callback', function(req, res) {
   })
 });
 
-app.get('/refresh', function(req, res) {
+router.get('/refresh', function(req, res) {
   const code = req.query.code || null;
   const authOptions = {
     url: 'https://accounts.spotify.com/api/token',
@@ -77,18 +79,19 @@ app.get('/refresh', function(req, res) {
   })
 });
 
-// Run the app by serving the static files
+// Run the router by serving the static files
 // in the dist directory
 
-app.use(express.static(__dirname + '/dist/spotify-analytics'));
+router.use(express.static(__dirname + '/dist/spotify-analytics'));
 
 // For all GET requests, send back index.html
 // so that PathLocationStrategy can be used
 
-app.get('/*', function(req, res) {
+router.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname + '/dist/spotify-analytics/index.html'));
 });
 
-const port = process.env.PORT || 8888;
 console.log(`Listening on port ${port}. Go /login to initiate authentication flow.`);
+app.use('/', router)
 app.listen(port);
+module.exports.handler = serverless(app)

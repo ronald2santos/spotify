@@ -95,14 +95,12 @@ export class ProfileComponent implements OnInit {
 
     getUserTopArtists() {
         this.spotify.getUserTopArtists(this.trackLimit, this.timeRange).subscribe((artists) => {
-            console.log(artists);
             this.artists = artists.items;
         });
     }
 
     getUserTopTracks() {
         this.spotify.getUserTopTracks(this.trackLimit, this.timeRange).subscribe((tracks) => {
-            console.log(tracks);
             this.tracks = tracks.items;
         });
     }
